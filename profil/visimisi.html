@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visi & Misi - MA Ma'arif Kalikuning</title>
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2e7d32;
+            --primary-light: #4caf50;
+            --primary-dark: #1b5e20;
+            --secondary: #ff8f00;
+            --secondary-dark: #e65100;
+            --accent: #66bb6a;
+            --dark: #2c3e50;
+            --gray: #6c757d;
+            --light: #f5f9f5;
+            --white: #ffffff;
+            --shadow: 0 5px 20px rgba(0,0,0,0.08);
+            --shadow-lg: 0 15px 35px rgba(0,0,0,0.12);
+            --radius: 12px;
+            --radius-lg: 20px;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            background: var(--light);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            padding: 80px 0 60px;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+        }
+
+        .breadcrumb {
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+
+        .breadcrumb a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--secondary);
+        }
+
+        .breadcrumb i {
+            margin: 0 8px;
+            font-size: 0.7rem;
+        }
+
+        .breadcrumb span {
+            color: var(--white);
+        }
+
+        .page-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .page-subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 60px 0;
+        }
+
+        /* Card */
+        .card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .card-header i {
+            font-size: 2rem;
+            color: var(--primary);
+        }
+
+        .card-header h2 {
+            font-size: 1.5rem;
+            color: var(--dark);
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Vision Box */
+        .vision-box {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: var(--radius-lg);
+            padding: 50px 40px;
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vision-box::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            font-size: 150px;
+            opacity: 0.1;
+            font-family: serif;
+            color: var(--white);
+        }
+
+        .vision-text {
+            font-size: 1.6rem;
+            line-height: 1.4;
+            color: var(--white);
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Explanation Grid */
+        .explanation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .explain-item {
+            padding: 20px;
+            background: var(--light);
+            border-radius: var(--radius);
+            transition: all 0.3s;
+        }
+
+        .explain-item:hover {
+            transform: translateY(-5px);
+            background: var(--white);
+            box-shadow: var(--shadow);
+        }
+
+        .explain-item h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .explain-item p {
+            color: var(--gray);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Mission List */
+        .mission-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .mission-list li {
+            padding: 18px 20px;
+            margin-bottom: 15px;
+            background: var(--light);
+            border-radius: var(--radius);
+            font-size: 1rem;
+            line-height: 1.6;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.3s;
+        }
+
+        .mission-list li:hover {
+            transform: translateX(10px);
+            background: var(--white);
+            box-shadow: var(--shadow);
+        }
+
+        .mission-list li::before {
+            content: attr(data-number);
+            background: var(--primary);
+            color: var(--white);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .mission-list strong {
+            color: var(--primary);
+        }
+
+        /* Values Grid */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .value-card {
+            text-align: center;
+            padding: 30px 25px;
+            background: var(--light);
+            border-radius: var(--radius-lg);
+            transition: all 0.3s;
+        }
+
+        .value-card:hover {
+            transform: translateY(-8px);
+            background: var(--white);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .value-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .value-icon i {
+            font-size: 1.8rem;
+            color: var(--white);
+        }
+
+        .value-title {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .value-card p {
+            color: var(--gray);
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        .detail-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .nav-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 28px;
+            background: var(--white);
+            border-radius: 40px;
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: var(--shadow);
+        }
+
+        .nav-button:hover {
+            background: var(--primary);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .nav-button.home {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .nav-button.home:hover {
+            background: var(--secondary);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            color: var(--white);
+            padding: 40px 0;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .footer p {
+            margin-bottom: 10px;
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-header { padding: 50px 0 40px; }
+            .page-title { font-size: 1.8rem; }
+            .card { padding: 25px; }
+            .vision-text { font-size: 1.2rem; }
+            .mission-list li { flex-direction: column; text-align: center; }
+            .mission-list li::before { margin-bottom: 10px; }
+            .detail-navigation { flex-direction: column; }
+            .nav-button { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== HEADER ===== -->
+    <header class="page-header">
+        <div class="container">
+            <div class="breadcrumb" data-aos="fade-right">
+                <a href="../index.html"><i class="fas fa-home"></i> Beranda</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="#">Profil</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Visi & Misi</span>
+            </div>
+            <h1 class="page-title" data-aos="fade-up">Visi & Misi</h1>
+            <p class="page-subtitle" data-aos="fade-up" data-aos-delay="100">
+                MA Ma'arif Kalikuning berkomitmen mencetak generasi unggul berakhlak mulia
+            </p>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <!-- Vision Card -->
+            <div class="card" data-aos="fade-up">
+                <div class="card-header">
+                    <i class="fas fa-bullseye"></i>
+                    <h2>Visi MA Ma'arif Kalikuning</h2>
+                </div>
+                
+                <div class="vision-box" data-aos="zoom-in" data-aos-delay="200">
+                    <p class="vision-text">
+                        "Menjadi lembaga pendidikan Islam yang menghasilkan lulusan yang berakhlak mulia, cerdas dan terampil serta berwawasan lingkungan"
+                    </p>
+                </div>
+                
+                <div class="explanation-grid" data-aos="fade-up" data-aos-delay="300">
+                    <div class="explain-item">
+                        <h4><i class="fas fa-star"></i> Berakhlak Mulia</h4>
+                        <p>Membentuk karakter siswa yang beriman, bertakwa, dan memiliki akhlak yang terpuji dalam kehidupan sehari-hari</p>
+                    </div>
+                    <div class="explain-item">
+                        <h4><i class="fas fa-graduation-cap"></i> Cerdas</h4>
+                        <p>Mengembangkan intelektual dan kompetensi akademik yang unggul di bidang ilmu pengetahuan</p>
+                    </div>
+                    <div class="explain-item">
+                        <h4><i class="fas fa-hands-helping"></i> Terampil</h4>
+                        <p>Membekali siswa dengan keterampilan praktis yang berguna di masyarakat dan dunia kerja</p>
+                    </div>
+                    <div class="explain-item">
+                        <h4><i class="fas fa-leaf"></i> Berwawasan Lingkungan</h4>
+                        <p>Menumbuhkan kesadaran dan kepedulian terhadap kelestarian lingkungan hidup</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mission Card -->
+            <div class="card" data-aos="fade-up" data-aos-delay="100">
+                <div class="card-header">
+                    <i class="fas fa-tasks"></i>
+                    <h2>Misi MA Ma'arif Kalikuning</h2>
+                </div>
+                
+                <div class="mission-list">
+                    <li data-number="1" data-aos="fade-right" data-aos-delay="200">
+                        <strong>Menyelenggarakan pendidikan berbasis Agama Islam</strong> yang mengintegrasikan nilai-nilai keislaman dalam setiap aspek pembelajaran
+                    </li>
+                    <li data-number="2" data-aos="fade-right" data-aos-delay="250">
+                        <strong>Menyelenggarakan pendidikan berbasis Ilmu Pengetahuan dan Teknologi</strong> untuk menghadapi tantangan era digital
+                    </li>
+                    <li data-number="3" data-aos="fade-right" data-aos-delay="300">
+                        <strong>Menyelenggarakan pendidikan berbasis keterampilan</strong> guna membekali siswa dengan kemampuan praktis yang aplikatif
+                    </li>
+                    <li data-number="4" data-aos="fade-right" data-aos-delay="350">
+                        <strong>Menyelenggarakan pendidikan berbasis Pancasila, Kebhinekatunggalikaan, NKRI, dan UUD 1945</strong> untuk menumbuhkan rasa cinta tanah air dan nasionalisme
+                    </li>
+                </div>
+            </div>
+
+            <!-- Values Card -->
+            <div class="card" data-aos="fade-up" data-aos-delay="150">
+                <div class="card-header">
+                    <i class="fas fa-handshake"></i>
+                    <h2>Nilai-Nilai Inti</h2>
+                </div>
+                
+                <div class="values-grid">
+                    <div class="value-card" data-aos="flip-left" data-aos-delay="200">
+                        <div class="value-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3 class="value-title">Keislaman</h3>
+                        <p>Mengutamakan nilai-nilai Islam dalam setiap kegiatan dan keputusan</p>
+                    </div>
+                    
+                    <div class="value-card" data-aos="flip-left" data-aos-delay="250">
+                        <div class="value-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3 class="value-title">Keilmuan</h3>
+                        <p>Mengembangkan ilmu pengetahuan dan teknologi secara berkelanjutan</p>
+                    </div>
+                    
+                    <div class="value-card" data-aos="flip-left" data-aos-delay="300">
+                        <div class="value-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h3 class="value-title">Keterampilan</h3>
+                        <p>Membekali siswa dengan kemampuan praktis yang bermanfaat</p>
+                    </div>
+                    
+                    <div class="value-card" data-aos="flip-left" data-aos-delay="350">
+                        <div class="value-icon">
+                            <i class="fas fa-flag-indonesia"></i>
+                        </div>
+                        <h3 class="value-title">Kebangsaan</h3>
+                        <p>Menanamkan rasa cinta tanah air dan nasionalisme</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <div class="detail-navigation" data-aos="fade-up">
+                <a href="sejarah.html" class="nav-button prev">
+                    <i class="fas fa-arrow-left"></i> Sejarah Madrasah
+                </a>
+                <a href="../index.html" class="nav-button home">
+                    <i class="fas fa-home"></i> Beranda
+                </a>
+                <a href="struktur.html" class="nav-button next">
+                    Struktur Organisasi <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 MA Ma'arif Kalikuning. All Rights Reserved.</p>
+            <p>Kalikuning, Bojonegoro, Jawa Timur | Email: info@mansaro.sch.id</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        // Add data-number attribute to mission list items
+        document.querySelectorAll('.mission-list li').forEach((item, index) => {
+            item.setAttribute('data-number', index + 1);
+        });
+    </script>
+</body>
+</html>

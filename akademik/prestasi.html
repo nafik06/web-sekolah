@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prestasi - MAN 1 Bojonegoro</title>
+    
+<!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../assets/css/detail-styles.css">
+    <link rel="stylesheet" href="../assets/css/layanan.css">
+    
+    <style>
+        /* Additional styles for administrasi */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+            margin-top: 40px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            padding: 35px 30px;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(52, 152, 219, 0.1);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(to right, #3498db, #f39c12);
+            transform: scaleX(0);
+            transition: transform 0.5s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            transition: all 0.4s ease;
+        }
+        
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(10deg);
+        }
+        
+        .service-icon i {
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .service-card h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .service-card p {
+            color: #6c757d;
+            margin-bottom: 25px;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .service-badge {
+            display: inline-block;
+            background: rgba(243, 156, 18, 0.1);
+            color: #f39c12;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .btn-service {
+            display: inline-block;
+            background: linear-gradient(to right, #3498db, #2980b9);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+        
+        .btn-service:hover {
+            background: linear-gradient(to right, #2980b9, #1a5276);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
+        }
+        
+        .forms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .form-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            border: 2px dashed #dee2e6;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .form-card:hover {
+            background: white;
+            border-color: #3498db;
+            transform: translateY(-5px);
+        }
+        
+        .form-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+        
+        .form-icon i {
+            font-size: 1.8rem;
+            color: white;
+        }
+        
+        .form-card h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .form-card p {
+            color: #6c757d;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .btn-form {
+            display: inline-block;
+            background: #f39c12;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+        }
+        
+        .btn-form:hover {
+            background: #e67e22;
+            transform: translateY(-3px);
+        }
+        
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .payment-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+        
+        .payment-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .payment-icon {
+            font-size: 2.5rem;
+            color: #27ae60;
+            margin-bottom: 15px;
+        }
+        
+        .payment-card h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .payment-card p {
+            color: #6c757d;
+            font-size: 0.9rem;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .contact-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .contact-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .contact-card h4 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .contact-details {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .contact-details li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .contact-details i {
+            color: #3498db;
+            width: 20px;
+        }
+        
+        .administration-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+            padding: 30px;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 15px;
+        }
+        
+        .admin-stat {
+            text-align: center;
+            padding: 25px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .admin-stat i {
+            font-size: 2.5rem;
+            color: #3498db;
+            margin-bottom: 15px;
+        }
+        
+        .admin-stat .number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #2c3e50;
+            font-family: 'Montserrat', sans-serif;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .admin-stat .label {
+            color: #6c757d;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        @media (max-width: 768px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .forms-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .payment-methods {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .administration-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body class="detail-page">
+    <!-- ===== HEADER ===== -->
+    <header class="detail-header">
+        <div class="container">
+            <div class="detail-breadcrumb" data-aos="fade-right">
+                <a href="../index.html"><i class="fas fa-home"></i> Beranda</a> 
+                <i class="fas fa-chevron-right"></i>
+                <a href="#">Akademik</a> 
+                <i class="fas fa-chevron-right"></i>
+                <span>Prestasi</span>
+            </div>
+            
+            <h1 class="detail-page-title" data-aos="fade-up">Prestasi Siswa & Guru</h1>
+            <p class="detail-page-subtitle" data-aos="fade-up" data-aos-delay="100">
+                Kumpulan penghargaan dan pencapaian yang membanggakan di berbagai bidang
+            </p>
+        </div>
+    </header>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="detail-main">
+        <section class="detail-content">
+            <div class="container">
+                <!-- Filter -->
+                <div class="detail-card" data-aos="fade-up">
+                    <div class="detail-card-header">
+                        <div class="detail-card-icon">
+                            <i class="fas fa-filter"></i>
+                        </div>
+                        <h2 class="detail-card-title">Filter Prestasi</h2>
+                    </div>
+                    
+                    <div class="achievement-filter">
+                        <button class="filter-btn active" data-filter="all">Semua</button>
+                        <button class="filter-btn" data-filter="nasional">Nasional</button>
+                        <button class="filter-btn" data-filter="provinsi">Provinsi</button>
+                        <button class="filter-btn" data-filter="kabupaten">Kabupaten</button>
+                        <button class="filter-btn" data-filter="2025">2025</button>
+                        <button class="filter-btn" data-filter="2024">2024</button>
+                        <button class="filter-btn" data-filter="sains">Sains</button>
+                        <button class="filter-btn" data-filter="olahraga">Olahraga</button>
+                        <button class="filter-btn" data-filter="seni">Seni</button>
+                    </div>
+                </div>
+
+                <!-- Achievement Stats -->
+                <div class="detail-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="detail-card-header">
+                        <div class="detail-card-icon">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <h2 class="detail-card-title">Statistik Prestasi</h2>
+                    </div>
+                    
+                    <div class="curriculum-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">245</span>
+                            <span class="stat-label">Total Prestasi</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">86</span>
+                            <span class="stat-label">Tingkat Nasional</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">102</span>
+                            <span class="stat-label">Tingkat Provinsi</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">57</span>
+                            <span class="stat-label">Tingkat Kabupaten</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Achievements Grid -->
+                <div class="detail-card" data-aos="fade-up" data-aos-delay="150">
+                    <div class="detail-card-header">
+                        <div class="detail-card-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h2 class="detail-card-title">Prestasi Terbaru</h2>
+                    </div>
+                    
+                    <div class="achievement-grid">
+                        <!-- Prestasi 1 -->
+                        <div class="achievement-card" data-category="nasional 2025 sains" data-aos="zoom-in">
+                            <div class="achievement-badge gold">
+                                <i class="fas fa-medal"></i>
+                                <span class="achievement-level">Juara 1 Nasional</span>
+                            </div>
+                            <div class="achievement-content">
+                                <span class="achievement-year">Oktober 2025</span>
+                                <h3 class="achievement-title">Kompetisi Sains Madrasah (KSM) Nasional</h3>
+                                <p class="achievement-desc">Bidang Matematika - Tingkat SMA/MA Se-Indonesia yang diselenggarakan oleh Kementerian Agama RI</p>
+                                <div class="achievement-student">
+                                    <i class="fas fa-user"></i>
+                                    <span>Ahmad Rizki (Kelas XII IPA)</span>
+                                </div>
+                                <a href="#" class="btn-link">Lihat Detail <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        
+                        <!-- Prestasi 2 -->
+                        <div class="achievement-card" data-category="provinsi 2025 sains" data-aos="zoom-in" data-aos-delay="100">
+                            <div class="achievement-badge silver">
+                                <i class="fas fa-medal"></i>
+                                <span class="achievement-level">Juara 2 Provinsi</span>
+                            </div>
+                            <div class="achievement-content">
+                                <span class="achievement-year">September 2025</span>
+                                <h3 class="achievement-title">Olimpiade Biologi Tingkat Jatim</h3>
+                                <p class="achievement-desc">Lomba Cerdas Cermat Biologi Se-Jawa Timur yang diikuti 150 peserta dari 50 sekolah</p>
+                                <div class="achievement-student">
+                                    <i class="fas fa-user"></i>
+                                    <span>Siti Aisyah (Kelas XI IPA)</span>
+                                </div>
+                                <a href="#" class="btn-link">Lihat Detail <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        
+                        <!-- Prestasi 3 -->
+                        <div class="achievement-card" data-category="nasional 2025 robotik" data-aos="zoom-in" data-aos-delay="200">
+                            <div class="achievement-badge bronze">
+                                <i class="fas fa-medal"></i>
+                                <span class="achievement-level">Juara 3 Nasional</span>
+                            </div>
+                            <div class="achievement-content">
+                                <span class="achievement-year">Agustus 2025</span>
+                                <h3 class="achievement-title">Festival Robotik Madrasah Nasional</h3>
+                                <p class="achievement-desc">Kategori Robot Pemadam Api - Regional Jawa Bali dengan 75 tim peserta</p>
+                                <div class="achievement-student">
+                                    <i class="fas fa-users"></i>
+                                    <span>Tim Robotik MANSARO (Ahmad, Budi, Sari)</span>
+                                </div>
+                                <a href="#" class="btn-link">Lihat Detail <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        
+                        <!-- Prestasi 4 -->
+                        <div class="achievement-card" data-category="nasional 2024 sains" data-aos="zoom-in" data-aos-delay="300">
+                            <div class="achievement-badge nasional">
+                                <i class="fas fa-award"></i>
+                                <span class="achievement-level">Harapan 1 Nasional</span>
+                            </div>
+                            <div class="achievement-content">
+                                <span class="achievement-year">November 2024</span>
+                                <h3 class="achievement-title">Olimpiade Kimia Indonesia</h3>
+                                <p class="achievement-desc">Kompetisi kimia tingkat nasional yang diikuti 200 peserta terbaik dari seluruh Indonesia</p>
+                                <div class="achievement-student">
+                                    <i class="fas fa-user"></i>
+                                    <span>Muhammad Fajar (Alumni 2024)</span>
+                                </div>
+                                <a href="#" class="btn-link">Lihat Detail <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        
+                        <!-- Prestasi 5 -->
+                        <div class="achievement-card" data-category="provinsi 2025 olahraga" data-aos="zoom-in" data-aos-delay="400">
+                            <div class="achievement-badge gold">
+                                <i class="fas fa-medal"></i>
+                                <span class="achievement-level">Juara 1 Provinsi</span>
+                            </div>
+                            <div class="achievement-content">
+                                <span class="achievement-year">Juli 2025</span>
+                                <h3 class="achievement-title">Kejuaraan Futsal Pelajar Jatim</h3>
+                                <p class="achievement-desc">Turnamen futsal antar MA/SMA se-Jawa Timur dengan 64 tim peserta</p>
+                                <div class="achievement-student">
+                                    <i class="fas fa-users"></i>
+                                    <span>Tim Futsal MANSARO</span>
+                                </div>
+                                <a href="#" class="btn-link">Lihat Detail <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        
+                        <!-- Prestasi 6 -->
+                        <div class="achievement-card" data-category="kabupaten 2025 seni" data-aos="zoom-in" data-aos-delay="500">
+                            <div class="achievement-badge gold">
+                                <i class="fas fa-medal"></i>
+                                <span class="achievement-level">Juara 1 Kabupaten</span>
+                            </div>
+                            <div class="achievement-content">
+                                <span class="achievement-year">Juni 2025</span>
+                                <h3 class="achievement-title">Festival Seni Islami Kabupaten</h3>
+                                <p class="achievement-desc">Lomba MTQ, Kaligrafi, dan Pidato Bahasa Arab se-Kabupaten Bojonegoro</p>
+                                <div class="achievement-student">
+                                    <i class="fas fa-user"></i>
+                                    <span>Rina Wulandari (Kelas X Agama)</span>
+                                </div>
+                                <a href="#" class="btn-link">Lihat Detail <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Guru Berprestasi -->
+                <div class="detail-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="detail-card-header">
+                        <div class="detail-card-icon">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        </div>
+                        <h2 class="detail-card-title">Guru Berprestasi</h2>
+                    </div>
+                    
+                    <div class="achievement-grid">
+                        <div class="achievement-card" data-aos="flip-left">
+                            <div class="achievement-badge nasional">
+                                <i class="fas fa-award"></i>
+                                <span class="achievement-level">Guru Berprestasi</span>
+                            </div>
+                            <div class="achievement-content">
+                                <span class="achievement-year">2025</span>
+                                <h3 class="achievement-title">Guru Berprestasi Tingkat Nasional</h3>
+                                <p class="achievement-desc">Penghargaan dari Kementerian Agama RI untuk inovasi pembelajaran berbasis teknologi</p>
+                                <div class="achievement-student">
+                                    <i class="fas fa-user-tie"></i>
+                                    <span>Dra. Siti Aminah, M.Pd (Guru Biologi)</span>
+                                </div>
+                                <a href="#" class="btn-link">Profil Lengkap <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        
+                        <div class="achievement-card" data-aos="flip-left" data-aos-delay="100">
+                            <div class="achievement-badge nasional">
+                                <i class="fas fa-award"></i>
+                                <span class="achievement-level">Penulis Terbaik</span>
+                            </div>
+                            <div class="achievement-content">
+                                <span class="achievement-year">2024</span>
+                                <h3 class="achievement-title">Penulis Buku Ajar Terbaik Nasional</h3>
+                                <p class="achievement-desc">Penghargaan untuk buku "Biologi Molekuler untuk SMA/MA" yang digunakan secara nasional</p>
+                                <div class="achievement-student">
+                                    <i class="fas fa-user-tie"></i>
+                                    <span>Dr. Ahmad Riyadi, M.Si (Guru Fisika)</span>
+                                </div>
+                                <a href="#" class="btn-link">Lihat Buku <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery -->
+                <div class="detail-card" data-aos="fade-up" data-aos-delay="250">
+                    <div class="detail-card-header">
+                        <div class="detail-card-icon">
+                            <i class="fas fa-images"></i>
+                        </div>
+                        <h2 class="detail-card-title">Galeri Prestasi</h2>
+                    </div>
+                    
+                    <div class="program-grid">
+                        <div class="program-card" data-aos="zoom-in">
+                            <div class="program-image">
+                                <img src="https://placehold.co/400x200/004d00/ffffff?text=UPACARA+KENAIKAN+BENDERA" alt="Upacara Bendera">
+                            </div>
+                            <div class="program-content">
+                                <h3>Upacara Kenaikan Bendera</h3>
+                                <p>Momen kebanggaan saat bendera MANSARO dikibarkan di upacara penghargaan prestasi nasional</p>
+                                <a href="#" class="btn-link">Lihat Album <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        
+                        <div class="program-card" data-aos="zoom-in" data-aos-delay="100">
+                            <div class="program-image">
+                                <img src="https://placehold.co/400x200/27ae60/ffffff?text=PIAGAM+DAN+TROFI" alt="Piagam dan Trofi">
+                            </div>
+                            <div class="program-content">
+                                <h3>Koleksi Piagam & Trofi</h3>
+                                <p>Ribuan piagam dan puluhan trofi yang menghiasi ruang pamer prestasi MANSARO</p>
+                                <a href="#" class="btn-link">Lihat Koleksi <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        
+                        <div class="program-card" data-aos="zoom-in" data-aos-delay="200">
+                            <div class="program-image">
+                                <img src="https://placehold.co/400x200/2980b9/ffffff?text=KEJUARAAN+ROBOTIK" alt="Kejuaraan Robotik">
+                            </div>
+                            <div class="program-content">
+                                <h3>Kejuaraan Robotik</h3>
+                                <p>Momen tim robotik MANSARO meraih juara di kompetisi tingkat regional Jawa-Bali</p>
+                                <a href="#" class="btn-link">Lihat Video <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <div class="detail-navigation" data-aos="fade-up">
+                    <a href="kalender.html" class="nav-button prev">
+                        <i class="fas fa-arrow-left"></i> Kalender Akademik
+                    </a>
+                    <a href="../index.html" class="nav-button home">
+                        <i class="fas fa-home"></i> Beranda
+                    </a>
+                    <a href="../kesiswaan/organisasi.html" class="nav-button next">
+                        Organisasi <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="detail-footer">
+        <div class="container">
+            <p>&copy; 2026 MAN 1 Bojonegoro. Seluruh hak cipta dilindungi.</p>
+            <p>Jl. Monginsidi No. 123, Bojonegoro, Jawa Timur | Email: info@mansaro.sch.id</p>
+        </div>
+    </footer>
+
+    <!-- ===== SCRIPTS ===== -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+        
+        // Achievement Filter Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const achievementCards = document.querySelectorAll('.achievement-card');
+            
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const filterValue = this.getAttribute('data-filter');
+                    
+                    // Filter achievement cards
+                    achievementCards.forEach(card => {
+                        const categories = card.getAttribute('data-category').split(' ');
+                        
+                        if (filterValue === 'all' || categories.includes(filterValue)) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

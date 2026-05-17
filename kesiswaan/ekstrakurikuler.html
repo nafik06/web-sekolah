@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ekstrakurikuler - MA Ma`arif Kalikuning</title>
+    
+   <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../assets/css/detail-styles.css">
+    <link rel="stylesheet" href="../assets/css/layanan.css">
+    
+    <style>
+        /* Additional styles for administrasi */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+            margin-top: 40px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            padding: 35px 30px;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(52, 152, 219, 0.1);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(to right, #3498db, #f39c12);
+            transform: scaleX(0);
+            transition: transform 0.5s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            transition: all 0.4s ease;
+        }
+        
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(10deg);
+        }
+        
+        .service-icon i {
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .service-card h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .service-card p {
+            color: #6c757d;
+            margin-bottom: 25px;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .service-badge {
+            display: inline-block;
+            background: rgba(243, 156, 18, 0.1);
+            color: #f39c12;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .btn-service {
+            display: inline-block;
+            background: linear-gradient(to right, #3498db, #2980b9);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+        
+        .btn-service:hover {
+            background: linear-gradient(to right, #2980b9, #1a5276);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
+        }
+        
+        .forms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .form-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            border: 2px dashed #dee2e6;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .form-card:hover {
+            background: white;
+            border-color: #3498db;
+            transform: translateY(-5px);
+        }
+        
+        .form-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+        
+        .form-icon i {
+            font-size: 1.8rem;
+            color: white;
+        }
+        
+        .form-card h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .form-card p {
+            color: #6c757d;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .btn-form {
+            display: inline-block;
+            background: #f39c12;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+        }
+        
+        .btn-form:hover {
+            background: #e67e22;
+            transform: translateY(-3px);
+        }
+        
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .payment-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+        
+        .payment-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .payment-icon {
+            font-size: 2.5rem;
+            color: #27ae60;
+            margin-bottom: 15px;
+        }
+        
+        .payment-card h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .payment-card p {
+            color: #6c757d;
+            font-size: 0.9rem;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .contact-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .contact-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .contact-card h4 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .contact-details {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .contact-details li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .contact-details i {
+            color: #3498db;
+            width: 20px;
+        }
+        
+        .administration-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+            padding: 30px;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 15px;
+        }
+        
+        .admin-stat {
+            text-align: center;
+            padding: 25px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .admin-stat i {
+            font-size: 2.5rem;
+            color: #3498db;
+            margin-bottom: 15px;
+        }
+        
+        .admin-stat .number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #2c3e50;
+            font-family: 'Montserrat', sans-serif;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .admin-stat .label {
+            color: #6c757d;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        @media (max-width: 768px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .forms-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .payment-methods {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .administration-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+      .detail-page-title {
+    color: white;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+}
+        
+.detail-page-subtitle {
+    color: white;
+    text-shadow: 1px 1px 6px rgba(0,0,0,0.5);
+}
+
+.detail-breadcrumb a,
+.detail-breadcrumb span,
+.detail-breadcrumb i {
+    color: white;
+}
+    </style>
+</head>
+<body class="detail-page">
+    <!-- ===== HEADER ===== -->
+    <header class="detail-header">
+        <div class="container">
+            <div class="detail-breadcrumb" data-aos="fade-right">
+                <a href="../index.html"><i class="fas fa-home"></i> Beranda</a> 
+                <i class="fas fa-chevron-right"></i>
+                <a href="#">Kesiswaan</a> 
+                <i class="fas fa-chevron-right"></i>
+                <span>Ekstrakurikuler</span>
+            </div>
+            
+            <h1 class="detail-page-title" data-aos="fade-up">Ekstrakurikuler MA Ma`arif Kalikuning</h1>
+            <p class="detail-page-subtitle" data-aos="fade-up" data-aos-delay="100">
+                Mengembangkan bakat, minat, dan kreativitas siswa melalui kegiatan 
+            </p>
+            <p class="detail-page-subtitle" data-aos="fade-up" data-aos-delay="100">
+                non-akademik yang beragam
+            </p>
+
+        </div>
+    </header>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="detail-main">
+        <section class="detail-content">
+            <div class="container">
+                <!-- Filter -->
+                <div class="detail-card" data-aos="fade-up">
+                    <div class="detail-card-header">
+                        <div class="detail-card-icon">
+                            <i class="fas fa-filter"></i>
+                        </div>
+                        <h2 class="detail-card-title">Filter Ekstrakurikuler</h2>
+                    </div>
+                    
+                    <div class="ekstra-filter">
+                        <button class="filter-btn active" data-filter="all">Semua</button>
+                        <button class="filter-btn" data-filter="sains">Sains & Teknologi</button>
+                        <button class="filter-btn" data-filter="olahraga">Olahraga</button>
+                        <button class="filter-btn" data-filter="seni">Seni & Budaya</button>
+                        <button class="filter-btn" data-filter="keterampilan">Keterampilan</button>
+                        <button class="filter-btn" data-filter="wajib">Wajib</button>
+                        <button class="filter-btn" data-filter="pilihan">Pilihan</button>
+                    </div>
+                </div>
+
+                <!-- Ekstrakurikuler Grid -->
+                <div class="detail-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="detail-card-header">
+                        <div class="detail-card-icon">
+                            <i class="fas fa-futbol"></i>
+                        </div>
+                        <h2 class="detail-card-title">Pilihan Ekstrakurikuler</h2>
+                    </div>
+                    
+                    <div class="ekstra-grid">
+                        <!-- Robotik -->
+                        <div class="ekstra-card" data-category="sains pilihan" data-aos="zoom-in">
+                            <div class="ekstra-img">
+                                <img src="robot.jpeg" alt="Robotik">
+                            </div>
+                            <div class="ekstra-icon">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div class="ekstra-content">
+                                <h3>Robotik</h3>
+                                <p class="ekstra-desc">Belajar merancang, membangun, dan memprogram robot untuk kompetisi nasional dan internasional.</p>
+                                <div class="ekstra-info">
+                                    <span><i class="fas fa-user"></i> 25 Anggota</span>
+                                    <span><i class="fas fa-trophy"></i> Juara Nasional</span>
+                                </div>
+                                <a href="#robotik" class="btn-link">Lihat Detail <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        
+                        <!-- Jurnalistik -->
+                        <div class="ekstra-card" data-category="keterampilan pilihan" data-aos="zoom-in" data-aos-delay="100">
+                            <div class="ekstra-img">
+                                <img src="jurnalistik.jpeg" alt="Jurnalistik">
+                            </div>
+                            <div class="ekstra-icon">
+                                <i class="fas fa-newspaper"></i>
+                            </div>
+                            <div class="ekstra-content">
+                                <h3>Jurnalistik</h3>
+                                <p class="ekstra-desc">Mengembangkan kemampuan menulis, fotografi, dan produksi media untuk buletin sekolah dan media sosial.</p>
+                                <div class="ekstra-info">
+                                    <span><i class="fas fa-user"></i> 30 Anggota</span>
+                                    <span><i class="fas fa-calendar"></i> Setiap Sabtu</span>
+                                </div>
+                                <a href="#jurnalistik" class="btn-link">Lihat Detail <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        
+                        <!-- Futsal -->
+                        <div class="ekstra-card" data-category="olahraga pilihan" data-aos="zoom-in" data-aos-delay="200">
+                            <div class="ekstra-img">
+                                <img src="https://placehold.co/400x200/2980b9/ffffff?text=FUTSAL" alt="Futsal">
+                            </div>
+                            <div class="ekstra-icon">
+                                <i class="fas fa-futbol"></i>
+                            </div>
+                            <div class="ekstra-content">
+                                <h3>Futsal</h3>
+                                <p class="ekstra-desc">Mengasah kemampuan bermain futsal dengan pelatih profesional untuk kompetisi antar sekolah.</p>
+                                <div class="ekstra-info">
+                                    <span><i class="fas fa-user"></i> 40 Anggota</span>
+                                    <span><i class="fas fa-trophy"></i> Juara Provinsi</span>
+                                </div>
+                                <a href="#futsal" class="btn-link">Lihat Detail <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        
+                        <!-- Drumband -->
+                        <div class="ekstra-card" data-category="seni wajib" data-aos="zoom-in" data-aos-delay="300">
+                            <div class="ekstra-img">
+                                <img src="https://placehold.co/400x200/e74c3c/ffffff?text=DRUMBAND" alt="Drumband">
+                            </div>
+                            <div class="ekstra-icon">
+                                <i class="fas fa-drum"></i>
+                            </div>
+                            <div class="ekstra-content">
+                                <h3>Drumband</h3>
+                                <p class="ekstra-desc">Mengembangkan bakat musik dan marching band untuk tampil dalam berbagai acara sekolah dan daerah.</p>
+                                <div class="ekstra-info">
+                                    <span><i class="fas fa-user"></i> 60 Anggota</span>
+                                    <span><i class="fas fa-music"></i> 3 Penampilan/Bulan</span>
+                                </div>
+                                <a href="#drumband" class="btn-link">Lihat Detail <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        
+                        <!-- PMR -->
+                        <div class="ekstra-card" data-category="keterampilan wajib" data-aos="zoom-in" data-aos-delay="400">
+                            <div class="ekstra-img">
+                                <img src="https://placehold.co/400x200/f39c12/ffffff?text=PMR" alt="PMR">
+                            </div>
+                            <div class="ekstra-icon">
+                                <i class="fas fa-first-aid"></i>
+                            </div>
+                            <div class="ekstra-content">
+                                <h3>Palang Merah Remaja (PMR)</h3>
+                                <p class="ekstra-desc">Pelatihan pertolongan pertama, kesehatan, dan kemanusiaan untuk menjadi relawan muda yang terampil.</p>
+                                <div class="ekstra-info">
+                                    <span><i class="fas fa-user"></i> 35 Anggota</span>
+                                    <span><i class="fas fa-certificate"></i> Sertifikasi PMI</span>
+                                </div>
+                                <a href="#pmr" class="btn-link">Lihat Detail <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        
+                        <!-- Teater -->
+                        <div class="ekstra-card" data-category="seni pilihan" data-aos="zoom-in" data-aos-delay="500">
+                            <div class="ekstra-img">
+                                <img src="https://placehold.co/400x200/9b59b6/ffffff?text=TEATER" alt="Teater">
+                            </div>
+                            <div class="ekstra-icon">
+                                <i class="fas fa-theater-masks"></i>
+                            </div>
+                            <div class="ekstra-content">
+                                <h3>Teater</h3>
+                                <p class="ekstra-desc">Mengembangkan kreativitas seni peran, penulisan naskah, dan produksi panggung untuk pentas seni.</p>
+                                <div class="ekstra-info">
+                                    <span><i class="fas fa-user"></i> 20 Anggota</span>
+                                    <span><i class="fas fa-calendar-alt"></i> 2 Pementasan/Tahun</span>
+                                </div>
+                                <a href="#teater" class="btn-link">Lihat Detail <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        
+                        <!-- Bahasa Asing -->
+                        <div class="ekstra-card" data-category="keterampilan pilihan" data-aos="zoom-in" data-aos-delay="600">
+                            <div class="ekstra-img">
+                                <img src="https://placehold.co/400x200/34495e/ffffff?text=BAHASA" alt="Bahasa Asing">
+                            </div>
+                            <div class="ekstra-icon">
+                                <i class="fas fa-language"></i>
+                            </div>
+                            <div class="ekstra-content">
+                                <h3>Klub Bahasa Asing</h3>
+                                <p class="ekstra-desc">Penguasaan bahasa Arab, Inggris, dan Jepang untuk percakapan sehari-hari dan akademik.</p>
+                                <div class="ekstra-info">
+                                    <span><i class="fas fa-user"></i> 45 Anggota</span>
+                                    <span><i class="fas fa-globe"></i> 3 Bahasa</span>
+                                </div>
+                                <a href="#bahasa" class="btn-link">Lihat Detail <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        
+                        <!-- Basket -->
+                        <div class="ekstra-card" data-category="olahraga pilihan" data-aos="zoom-in" data-aos-delay="700">
+                            <div class="ekstra-img">
+                                <img src="https://placehold.co/400x200/1abc9c/ffffff?text=BASKET" alt="Basket">
+                            </div>
+                            <div class="ekstra-icon">
+                                <i class="fas fa-basketball-ball"></i>
+                            </div>
+                            <div class="ekstra-content">
+                                <h3>Basket</h3>
+                                <p class="ekstra-desc">Latihan teknik dasar hingga strategi permainan basket untuk kompetisi antar sekolah.</p>
+                                <div class="ekstra-info">
+                                    <span><i class="fas fa-user"></i> 30 Anggota</span>
+                                    <span><i class="fas fa-medal"></i> Juara Kabupaten</span>
+                                </div>
+                                <a href="#basket" class="btn-link">Lihat Detail <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detail Ekstrakurikuler -->
+                <div class="detail-card" data-aos="fade-up" data-aos-delay="150" id="robotik">
+                    <div class="detail-card-header">
+                        <div class="detail-card-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h2 class="detail-card-title">Detail Ekstrakurikuler: Robotik</h2>
+                    </div>
+                    
+                    <div class="program-grid">
+                        <div class="program-card">
+                            <div class="program-header">
+                                <div class="program-icon">
+                                    <i class="fas fa-info-circle"></i>
+                                </div>
+                                <h3 class="program-title">Informasi Umum</h3>
+                            </div>
+                            <ul class="program-results">
+                                <li><i class="fas fa-user-tie"></i> Pembina: Rizki Ahmad, M.Kom</li>
+                                <li><i class="fas fa-users"></i> Ketua: Agung Pratama (XI IPA 2)</li>
+                                <li><i class="fas fa-calendar"></i> Jadwal: Sabtu, 13:00 - 16:00</li>
+                                <li><i class="fas fa-map-marker"></i> Tempat: Lab Komputer 2</li>
+                                <li><i class="fas fa-star"></i> Jenis: Pilihan (Sains & Teknologi)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="program-card">
+                            <div class="program-header">
+                                <div class="program-icon">
+                                    <i class="fas fa-trophy"></i>
+                                </div>
+                                <h3 class="program-title">Prestasi</h3>
+                            </div>
+                            <ul class="program-results">
+                                <li><i class="fas fa-medal"></i> Juara 3 Festival Robotik Nasional 2025</li>
+                                <li><i class="fas fa-medal"></i> Juara 2 Kontes Robot Regional Jatim 2024</li>
+                                <li><i class="fas fa-medal"></i> Juara 1 Lomba Robotik Kabupaten 2023-2025</li>
+                                <li><i class="fas fa-award"></i> 15 Penghargaan Tingkat Regional</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="program-card">
+                            <div class="program-header">
+                                <div class="program-icon">
+                                    <i class="fas fa-calendar-check"></i>
+                                </div>
+                                <h3 class="program-title">Program Kerja 2026</h3>
+                            </div>
+                            <ul class="program-results">
+                                <li><i class="fas fa-check"></i> Workshop Arduino & IoT</li>
+                                <li><i class="fas fa-check"></i> Kompetisi Robot Internal</li>
+                                <li><i class="fas fa-check"></i> Eksibisi Robot di Car Free Day</li>
+                                <li><i class="fas fa-check"></i> Persiapan Kontes Robot Nasional</li>
+                                <li><i class="fas fa-check"></i> Open Lab untuk Siswa Baru</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Jadwal Kegiatan -->
+                <div class="detail-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="detail-card-header">
+                        <div class="detail-card-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h2 class="detail-card-title">Jadwal Kegiatan Mingguan</h2>
+                    </div>
+                    
+                    <div class="schedule-container">
+                        <div class="schedule-tabs">
+                            <div class="schedule-tab active" data-day="senin">Senin</div>
+                            <div class="schedule-tab" data-day="selasa">Selasa</div>
+                            <div class="schedule-tab" data-day="rabu">Rabu</div>
+                            <div class="schedule-tab" data-day="kamis">Kamis</div>
+                            <div class="schedule-tab" data-day="jumat">Jumat</div>
+                            <div class="schedule-tab" data-day="sabtu">Sabtu</div>
+                        </div>
+                        
+                        <div class="schedule-content">
+                            <div class="schedule-day" id="senin">
+                                <h3>Senin</h3>
+                                <ul class="activity-list">
+                                    <li class="activity-item">
+                                        <div class="activity-time">15:30 - 17:30</div>
+                                        <div class="activity-info">
+                                            <h4>Futsal (Putra)</h4>
+                                            <p>Lapangan Futsal | Pelatih: Joko Susilo, S.Pd</p>
+                                        </div>
+                                    </li>
+                                    <li class="activity-item">
+                                        <div class="activity-time">15:30 - 17:00</div>
+                                        <div class="activity-info">
+                                            <h4>PMR (Dasar)</h4>
+                                            <p>Ruang UKS | Pembina: Dra. Ani Wijaya</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="schedule-day" id="selasa" style="display: none;">
+                                <h3>Selasa</h3>
+                                <ul class="activity-list">
+                                    <li class="activity-item">
+                                        <div class="activity-time">15:30 - 17:30</div>
+                                        <div class="activity-info">
+                                            <h4>Basket (Putra)</h4>
+                                            <p>Lapangan Basket | Pelatih: Budi Santoso</p>
+                                        </div>
+                                    </li>
+                                    <li class="activity-item">
+                                        <div class="activity-time">15:30 - 17:00</div>
+                                        <div class="activity-info">
+                                            <h4>Klub Bahasa Arab</h4>
+                                            <p>Lab Bahasa 1 | Mentor: Ust. Arif</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="schedule-day" id="rabu" style="display: none;">
+                                <h3>Rabu</h3>
+                                <ul class="activity-list">
+                                    <li class="activity-item">
+                                        <div class="activity-time">15:30 - 17:30</div>
+                                        <div class="activity-info">
+                                            <h4>Drumband</h4>
+                                            <p>Lapangan Utama | Pelatih: Rina Setiawati</p>
+                                        </div>
+                                    </li>
+                                    <li class="activity-item">
+                                        <div class="activity-time">15:30 - 17:00</div>
+                                        <div class="activity-info">
+                                            <h4>Teater</h4>
+                                            <p>Aula Serbaguna | Pembina: Sri Wahyuni, S.Sn</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="schedule-day" id="kamis" style="display: none;">
+                                <h3>Kamis</h3>
+                                <ul class="activity-list">
+                                    <li class="activity-item">
+                                        <div class="activity-time">15:30 - 17:30</div>
+                                        <div class="activity-info">
+                                            <h4>Futsal (Putri)</h4>
+                                            <p>Lapangan Futsal | Pelatih: Sari Wulandari</p>
+                                        </div>
+                                    </li>
+                                    <li class="activity-item">
+                                        <div class="activity-time">15:30 - 17:00</div>
+                                        <div class="activity-info">
+                                            <h4>Klub Bahasa Inggris</h4>
+                                            <p>Lab Bahasa 2 | Mentor: Nurul Hikmah</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="schedule-day" id="jumat" style="display: none;">
+                                <h3>Jumat</h3>
+                                <ul class="activity-list">
+                                    <li class="activity-item">
+                                        <div class="activity-time">14:00 - 16:00</div>
+                                        <div class="activity-info">
+                                            <h4>Jurnalistik</h4>
+                                            <p>Ruang Redaksi | Pembina: Fitriani, S.Pd</p>
+                                        </div>
+                                    </li>
+                                    <li class="activity-item">
+                                        <div class="activity-time">14:00 - 16:00</div>
+                                        <div class="activity-info">
+                                            <h4>PMR (Lanjuatan)</h4>
+                                            <p>Ruang UKS | Pembina: Dra. Ani Wijaya</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="schedule-day" id="sabtu" style="display: none;">
+                                <h3>Sabtu</h3>
+                                <ul class="activity-list">
+                                    <li class="activity-item">
+                                        <div class="activity-time">08:00 - 11:00</div>
+                                        <div class="activity-info">
+                                            <h4>Robotik</h4>
+                                            <p>Lab Komputer 2 | Pembina: Rizki Ahmad, M.Kom</p>
+                                        </div>
+                                    </li>
+                                    <li class="activity-item">
+                                        <div class="activity-time">13:00 - 16:00</div>
+                                        <div class="activity-info">
+                                            <h4>Basket (Putri)</h4>
+                                            <p>Lapangan Basket | Pelatih: Siti Aminah</p>
+                                        </div>
+                                    </li>
+                                    <li class="activity-item">
+                                        <div class="activity-time">13:00 - 15:00</div>
+                                        <div class="activity-info">
+                                            <h4>Klub Bahasa Jepang</h4>
+                                            <p>Lab Bahasa 1 | Mentor: Ahmad Fauzi</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pendaftaran -->
+                <div class="detail-card" data-aos="fade-up" data-aos-delay="250">
+                    <div class="detail-card-header">
+                        <div class="detail-card-icon">
+                            <i class="fas fa-clipboard-check"></i>
+                        </div>
+                        <h2 class="detail-card-title">Pendaftaran Ekstrakurikuler</h2>
+                    </div>
+                    
+                    <div class="program-grid">
+                        <div class="program-card">
+                            <div class="program-content">
+                                <h3>Syarat Pendaftaran</h3>
+                                <ul class="program-features">
+                                    <li><i class="fas fa-check"></i> Siswa aktif MAN 1 Bojonegoro</li>
+                                    <li><i class="fas fa-check"></i> Fotokopi rapor semester terakhir</li>
+                                    <li><i class="fas fa-check"></i> Surat izin orang tua</li>
+                                    <li><i class="fas fa-check"></i> Pas foto 3x4 (2 lembar)</li>
+                                    <li><i class="fas fa-check"></i> Mengisi formulir pendaftaran</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="program-card">
+                            <div class="program-content">
+                                <h3>Waktu Pendaftaran</h3>
+                                <ul class="program-features">
+                                    <li><i class="fas fa-calendar"></i> Gelombang 1: 15-30 Januari 2026</li>
+                                    <li><i class="fas fa-calendar"></i> Gelombang 2: 1-15 Februari 2026</li>
+                                    <li><i class="fas fa-clock"></i> Senin - Jumat: 08:00 - 14:00</li>
+                                    <li><i class="fas fa-clock"></i> Sabtu: 08:00 - 12:00</li>
+                                    <li><i class="fas fa-map-marker"></i> Ruang Kesiswaan</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="program-card">
+                            <div class="program-content">
+                                <h3>Pendaftaran Online</h3>
+                                <div style="text-align: center; margin-top: 20px;">
+                                    <a href="#" class="btn-primary">
+                                        <i class="fas fa-laptop"></i> Daftar Online Sekarang
+                                    </a>
+                                    <p style="margin-top: 15px; font-size: 0.9rem; color: var(--gray-color);">
+                                        atau download formulir pendaftaran
+                                    </p>
+                                    <a href="#" class="btn-outline" style="margin-top: 10px;">
+                                        <i class="fas fa-download"></i> Download Formulir
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <div class="detail-navigation" data-aos="fade-up">
+                    <a href="organisasi.html" class="nav-button prev">
+                        <i class="fas fa-arrow-left"></i> Organisasi
+                    </a>
+                    <a href="../index.html" class="nav-button home">
+                        <i class="fas fa-home"></i> Beranda
+                    </a>
+                    <a href="osis.html" class="nav-button next">
+                        OSIS/MPK <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="detail-footer">
+        <div class="container">
+            <p>&copy; 2026 MAN 1 Bojonegoro. Seluruh hak cipta dilindungi.</p>
+            <p>Jl. Monginsidi No. 123, Bojonegoro, Jawa Timur | Email: info@mansaro.sch.id</p>
+        </div>
+    </footer>
+
+    <!-- ===== SCRIPTS ===== -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+        
+        // Ekstrakurikuler Filter Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const ekstraCards = document.querySelectorAll('.ekstra-card');
+            
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const filterValue = this.getAttribute('data-filter');
+                    
+                    // Filter ekstra cards
+                    ekstraCards.forEach(card => {
+                        const categories = card.getAttribute('data-category').split(' ');
+                        
+                        if (filterValue === 'all' || categories.includes(filterValue)) {
+                            card.style.display = 'block';
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'translateY(0)';
+                            }, 10);
+                        } else {
+                            card.style.opacity = '0';
+                            card.style.transform = 'translateY(20px)';
+                            setTimeout(() => {
+                                card.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
+            });
+            
+            // Schedule Tabs Functionality
+            const scheduleTabs = document.querySelectorAll('.schedule-tab');
+            const scheduleDays = document.querySelectorAll('.schedule-day');
+            
+            scheduleTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Remove active class from all tabs
+                    scheduleTabs.forEach(t => t.classList.remove('active'));
+                    
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+                    
+                    const dayId = this.getAttribute('data-day');
+                    
+                    // Show selected day content
+                    scheduleDays.forEach(day => {
+                        if (day.id === dayId) {
+                            day.style.display = 'block';
+                        } else {
+                            day.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Activity Item Click Handler
+            const activityItems = document.querySelectorAll('.activity-item');
+            
+            activityItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const activityName = this.querySelector('h4').textContent;
+                    const activityTime = this.querySelector('.activity-time').textContent;
+                    const activityLocation = this.querySelector('p').textContent;
+                    
+                    alert(`Detail Kegiatan:\n\n${activityName}\n\nWaktu: ${activityTime}\nTempat: ${activityLocation}\n\nHubungi pembina untuk informasi lebih lanjut.`);
+                });
+            });
+            
+            // Anchor Scroll for Detail Sections
+            const detailLinks = document.querySelectorAll('a[href^="#"]');
+            
+            detailLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId !== '#') {
+                        e.preventDefault();
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 100,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

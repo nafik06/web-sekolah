@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guru & Staff - MA Ma'arif Kalikuning</title>
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a472a;
+            --primary-dark: #0d2818;
+            --secondary: #e67e22;
+            --secondary-dark: #d35400;
+            --accent: #27ae60;
+            --dark: #2c3e50;
+            --gray: #6c757d;
+            --light: #f8f9fa;
+            --white: #ffffff;
+            --shadow: 0 5px 20px rgba(0,0,0,0.08);
+            --shadow-lg: 0 10px 30px rgba(0,0,0,0.12);
+            --radius: 12px;
+            --radius-lg: 20px;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            background: var(--light);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== HEADER ===== */
+        .page-header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            padding: 80px 0 60px;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+            transform: translate(100px, -100px);
+        }
+
+        .page-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 200px;
+            height: 200px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 50%;
+            transform: translate(-50px, 50px);
+        }
+
+        .breadcrumb {
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+
+        .breadcrumb a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--secondary);
+        }
+
+        .breadcrumb i {
+            margin: 0 8px;
+            font-size: 0.7rem;
+        }
+
+        .breadcrumb span {
+            color: var(--white);
+        }
+
+        .page-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .page-subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+        }
+
+        /* ===== STRUCTURE CHART ===== */
+        .structure-section {
+            padding: 80px 0;
+            background: var(--white);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--gray);
+            margin-bottom: 50px;
+        }
+
+        /* Org Chart */
+        .org-chart {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .org-level {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .org-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            padding: 25px 35px;
+            text-align: center;
+            transition: all 0.3s;
+            border-bottom: 4px solid var(--secondary);
+            min-width: 220px;
+        }
+
+        .org-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .org-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+        }
+
+        .org-icon i {
+            font-size: 1.8rem;
+            color: var(--white);
+        }
+
+        .org-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 5px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .org-position {
+            font-size: 0.85rem;
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        .connector-line {
+            width: 2px;
+            height: 30px;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+            margin: 0 auto;
+        }
+
+        .org-row {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+        }
+
+        .org-sub-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 20px 25px;
+            text-align: center;
+            min-width: 180px;
+            border-left: 3px solid var(--secondary);
+            transition: all 0.3s;
+        }
+
+        .org-sub-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .org-sub-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(230,126,34,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 12px;
+        }
+
+        .org-sub-icon i {
+            font-size: 1.3rem;
+            color: var(--secondary);
+        }
+
+        .org-sub-name {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 3px;
+        }
+
+        .org-sub-position {
+            font-size: 0.75rem;
+            color: var(--gray);
+        }
+
+        /* ===== WALI KELAS SECTION ===== */
+        .walikelas-section {
+            padding: 80px 0;
+            background: var(--light);
+        }
+
+        .walikelas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .walikelas-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .walikelas-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .walikelas-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--secondary);
+            color: var(--white);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        .walikelas-img {
+            height: 120px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .walikelas-img i {
+            font-size: 3rem;
+            color: rgba(255,255,255,0.3);
+        }
+
+        .walikelas-info {
+            padding: 25px;
+            text-align: center;
+        }
+
+        .walikelas-info h3 {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 5px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .walikelas-info p {
+            color: var(--secondary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .walikelas-detail {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .walikelas-detail span {
+            font-size: 0.8rem;
+            color: var(--gray);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* ===== GURU SECTION ===== */
+        .guru-section {
+            padding: 80px 0;
+            background: var(--white);
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 50px;
+        }
+
+        .filter-btn {
+            padding: 10px 25px;
+            background: var(--light);
+            border: none;
+            border-radius: 30px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: var(--dark);
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--secondary);
+            color: var(--white);
+        }
+
+        .guru-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .guru-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .guru-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .guru-img {
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .guru-img i {
+            font-size: 4rem;
+            color: rgba(255,255,255,0.2);
+        }
+
+        .guru-badge {
+            position: absolute;
+            bottom: -15px;
+            left: 20px;
+            background: var(--secondary);
+            color: var(--white);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        .guru-info {
+            padding: 25px 20px 20px;
+            text-align: center;
+        }
+
+        .guru-info h3 {
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-bottom: 5px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .guru-mapel {
+            display: inline-block;
+            background: rgba(230,126,34,0.1);
+            color: var(--secondary);
+            padding: 3px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .guru-detail {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .guru-detail span {
+            font-size: 0.75rem;
+            color: var(--gray);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* ===== STAFF SECTION ===== */
+        .staff-section {
+            padding: 80px 0;
+            background: var(--light);
+        }
+
+        .staff-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .staff-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+        }
+
+        .staff-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .staff-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .staff-icon i {
+            font-size: 2rem;
+            color: var(--white);
+        }
+
+        .staff-card h3 {
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-bottom: 5px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .staff-position {
+            color: var(--secondary);
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+        }
+
+        .staff-detail {
+            font-size: 0.8rem;
+            color: var(--gray);
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        /* ===== STATISTIK ===== */
+        .stats-section {
+            padding: 60px 0;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--white);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .stat-card {
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* ===== NAVIGASI ===== */
+        .detail-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid #eee;
+        }
+
+        .nav-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 25px;
+            background: var(--white);
+            border-radius: 30px;
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: var(--shadow);
+        }
+
+        .nav-button:hover {
+            background: var(--secondary);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .nav-button.home {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .nav-button.home:hover {
+            background: var(--secondary);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--dark);
+            color: var(--white);
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer p {
+            margin-bottom: 10px;
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 992px) {
+            .page-title { font-size: 2rem; }
+            .org-card { min-width: 180px; padding: 20px; }
+        }
+
+        @media (max-width: 768px) {
+            .page-header { padding: 50px 0 40px; }
+            .page-title { font-size: 1.8rem; }
+            .org-row { gap: 15px; }
+            .org-sub-card { min-width: 150px; }
+            .detail-navigation { flex-direction: column; }
+            .nav-button { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== HEADER ===== -->
+    <header class="page-header">
+        <div class="container">
+            <div class="breadcrumb" data-aos="fade-right">
+                <a href="../index.html"><i class="fas fa-home"></i> Beranda</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="#">Profil</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Guru & Staff</span>
+            </div>
+            <h1 class="page-title" data-aos="fade-up">Tenaga Pendidik & Kependidikan</h1>
+            <p class="page-subtitle" data-aos="fade-up" data-aos-delay="100">
+                Tim guru profesional dan staff berdedikasi yang siap memberikan pendidikan terbaik bagi generasi unggul
+            </p>
+        </div>
+    </header>
+
+    <main>
+        <!-- ===== STRUKTUR ORGANISASI ===== -->
+        <section class="structure-section">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">Struktur Organisasi Madrasah</h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">MA Ma'arif Kalikuning</p>
+
+                <div class="org-chart" data-aos="fade-up" data-aos-delay="200">
+                    <!-- Komite & Kepala Madrasah -->
+                    <div class="org-level">
+                        <div class="org-card">
+                            <div class="org-icon">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <div class="org-name">Sunaryo</div>
+                            <div class="org-position">Komite Madrasah</div>
+                        </div>
+                    </div>
+
+                    <div class="connector-line"></div>
+
+                    <div class="org-level">
+                        <div class="org-card" style="border-bottom-color: var(--primary);">
+                            <div class="org-icon" style="background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <div class="org-name">Ihsani, S.Pd.</div>
+                            <div class="org-position">Kepala Madrasah</div>
+                        </div>
+                    </div>
+
+                    <div class="connector-line"></div>
+
+                    <!-- WAKAUR (3 posisi) -->
+                    <div class="org-row">
+                        <div class="org-sub-card">
+                            <div class="org-sub-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="org-sub-name">Zaenal Mustaqin, S.Pd.I</div>
+                            <div class="org-sub-position">WAKAUR Kesiswaan</div>
+                        </div>
+                        <div class="org-sub-card">
+                            <div class="org-sub-icon">
+                                <i class="fas fa-book-open"></i>
+                            </div>
+                            <div class="org-sub-name">Afif Miadatu F., S.Si, M.Pd.</div>
+                            <div class="org-sub-position">WAKAUR Kurikulum</div>
+                        </div>
+                        <div class="org-sub-card">
+                            <div class="org-sub-icon">
+                                <i class="fas fa-chalkboard-user"></i>
+                            </div>
+                            <div class="org-sub-name">Etik Suryani, S.Pd.</div>
+                            <div class="org-sub-position">WAKAUR Humas</div>
+                        </div>
+                        <div class="org-sub-card">
+                            <div class="org-sub-icon">
+                                <i class="fas fa-building"></i>
+                            </div>
+                            <div class="org-sub-name">Heru Prasetiyo, S.Pd.</div>
+                            <div class="org-sub-position">WAKAUR Sarpras</div>
+                        </div>
+                    </div>
+
+                    <div class="connector-line"></div>
+
+                    <!-- KTU & Perpustakaan -->
+                    <div class="org-row">
+                        <div class="org-sub-card">
+                            <div class="org-sub-icon">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <div class="org-sub-name">Heppy Damayanti, S.Pd</div>
+                            <div class="org-sub-position">KTU</div>
+                        </div>
+                        <div class="org-sub-card">
+                            <div class="org-sub-icon">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <div class="org-sub-name">Indraswati, S.Pd</div>
+                            <div class="org-sub-position">K. Perpustakaan</div>
+                        </div>
+                    </div>
+
+                    <div class="connector-line"></div>
+
+                    <!-- Guru & Staff -->
+                    <div class="org-row">
+                        <div class="org-sub-card">
+                            <div class="org-sub-icon">
+                                <i class="fas fa-chalkboard-user"></i>
+                            </div>
+                            <div class="org-sub-name">Guru</div>
+                            <div class="org-sub-position">Tenaga Pendidik</div>
+                        </div>
+                        <div class="org-sub-card">
+                            <div class="org-sub-icon">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                            <div class="org-sub-name">Siswa</div>
+                            <div class="org-sub-position">Peserta Didik</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== WALI KELAS ===== -->
+        <section class="walikelas-section">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">Wali Kelas</h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Pendamping dan pembimbing siswa dalam proses belajar mengajar</p>
+
+                <div class="walikelas-grid" data-aos="fade-up" data-aos-delay="200">
+                    <div class="walikelas-card">
+                        <div class="walikelas-badge">Wali Kelas XII</div>
+                        <div class="walikelas-img">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <div class="walikelas-info">
+                            <h3>Dwi Pawestri, S.Pd</h3>
+                            <p>Wali Kelas XII</p>
+                            <div class="walikelas-detail">
+                                <span><i class="fas fa-graduation-cap"></i> S1 Pendidikan</span>
+                                <span><i class="fas fa-calendar"></i> 8 Tahun</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="walikelas-card">
+                        <div class="walikelas-badge">Wali Kelas XI</div>
+                        <div class="walikelas-img">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <div class="walikelas-info">
+                            <h3>Sumarti, S.Pd</h3>
+                            <p>Wali Kelas XI</p>
+                            <div class="walikelas-detail">
+                                <span><i class="fas fa-graduation-cap"></i> S1 Pendidikan</span>
+                                <span><i class="fas fa-calendar"></i> 10 Tahun</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="walikelas-card">
+                        <div class="walikelas-badge">Wali Kelas X</div>
+                        <div class="walikelas-img">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <div class="walikelas-info">
+                            <h3>Langeng Puji Rahayu, SE</h3>
+                            <p>Wali Kelas X</p>
+                            <div class="walikelas-detail">
+                                <span><i class="fas fa-graduation-cap"></i> S1 Ekonomi</span>
+                                <span><i class="fas fa-calendar"></i> 5 Tahun</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== GURU PENGAJAR ===== -->
+        <section class="guru-section">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">Guru Pengajar</h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Tenaga pendidik profesional yang berdedikasi</p>
+
+                <div class="filter-buttons" data-aos="fade-up" data-aos-delay="150">
+                    <button class="filter-btn active" data-filter="all">Semua</button>
+                    <button class="filter-btn" data-filter="umum">Umum</button>
+                    <button class="filter-btn" data-filter="agama">Agama</button>
+                    <button class="filter-btn" data-filter="staff">Staff</button>
+                </div>
+
+                <div class="guru-grid" id="guruGrid" data-aos="fade-up" data-aos-delay="200">
+                    <!-- Guru 1 - Kepala Madrasah -->
+                    <div class="guru-card" data-category="umum">
+                        <div class="guru-img">
+                            <i class="fas fa-user-tie"></i>
+                            <span class="guru-badge">Kepala Madrasah</span>
+                        </div>
+                        <div class="guru-info">
+                            <h3>Ihsani, S.Pd.</h3>
+                            <span class="guru-mapel">Kepala Madrasah</span>
+                            <div class="guru-detail">
+                                <span><i class="fas fa-graduation-cap"></i> S1 Pendidikan</span>
+                                <span><i class="fas fa-certificate"></i> 15+ Tahun</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Guru 2 - WAKAUR Kurikulum -->
+                    <div class="guru-card" data-category="umum">
+                        <div class="guru-img">
+                            <i class="fas fa-chalkboard-user"></i>
+                            <span class="guru-badge">WAKAUR Kurikulum</span>
+                        </div>
+                        <div class="guru-info">
+                            <h3>Afif Miadatu F., S.Si, M.Pd.</h3>
+                            <span class="guru-mapel">Fisika / Kurikulum</span>
+                            <div class="guru-detail">
+                                <span><i class="fas fa-graduation-cap"></i> S2 Pendidikan</span>
+                                <span><i class="fas fa-certificate"></i> 12 Tahun</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Guru 3 - WAKAUR Kesiswaan -->
+                    <div class="guru-card" data-category="umum">
+                        <div class="guru-img">
+                            <i class="fas fa-users"></i>
+                            <span class="guru-badge">WAKAUR Kesiswaan</span>
+                        </div>
+                        <div class="guru-info">
+                            <h3>Zaenal Mustaqin, S.Pd.I</h3>
+                            <span class="guru-mapel">Pend. Agama Islam</span>
+                            <div class="guru-detail">
+                                <span><i class="fas fa-graduation-cap"></i> S1 Pendidikan</span>
+                                <span><i class="fas fa-certificate"></i> 10 Tahun</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Guru 4 - WAKAUR Humas -->
+                    <div class="guru-card" data-category="umum">
+                        <div class="guru-img">
+                            <i class="fas fa-phone-alt"></i>
+                            <span class="guru-badge">WAKAUR Humas</span>
+                        </div>
+                        <div class="guru-info">
+                            <h3>Etik Suryani, S.Pd.</h3>
+                            <span class="guru-mapel">Bahasa Indonesia</span>
+                            <div class="guru-detail">
+                                <span><i class="fas fa-graduation-cap"></i> S1 Pendidikan</span>
+                                <span><i class="fas fa-certificate"></i> 9 Tahun</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Guru 5 - WAKAUR Sarpras -->
+                    <div class="guru-card" data-category="umum">
+                        <div class="guru-img">
+                            <i class="fas fa-tools"></i>
+                            <span class="guru-badge">WAKAUR Sarpras</span>
+                        </div>
+                        <div class="guru-info">
+                            <h3>Heru Prasetiyo, S.Pd.</h3>
+                            <span class="guru-mapel">Olahraga</span>
+                            <div class="guru-detail">
+                                <span><i class="fas fa-graduation-cap"></i> S1 Pendidikan</span>
+                                <span><i class="fas fa-certificate"></i> 8 Tahun</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Guru 6 - Agama -->
+                    <div class="guru-card" data-category="agama">
+                        <div class="guru-img">
+                            <i class="fas fa-mosque"></i>
+                            <span class="guru-badge">Guru Agama</span>
+                        </div>
+                        <div class="guru-info">
+                            <h3>Ustadz H. Ahmad Fauzi, S.Ag</h3>
+                            <span class="guru-mapel">Pendidikan Agama Islam</span>
+                            <div class="guru-detail">
+                                <span><i class="fas fa-graduation-cap"></i> S1 Agama</span>
+                                <span><i class="fas fa-certificate"></i> 18 Tahun</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Guru 7 - Matematika -->
+                    <div class="guru-card" data-category="umum">
+                        <div class="guru-img">
+                            <i class="fas fa-calculator"></i>
+                            <span class="guru-badge">Guru Matematika</span>
+                        </div>
+                        <div class="guru-info">
+                            <h3>Nur Hasanah, S.Pd</h3>
+                            <span class="guru-mapel">Matematika</span>
+                            <div class="guru-detail">
+                                <span><i class="fas fa-graduation-cap"></i> S1 Pendidikan</span>
+                                <span><i class="fas fa-certificate"></i> 7 Tahun</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Guru 8 - Bahasa Inggris -->
+                    <div class="guru-card" data-category="umum">
+                        <div class="guru-img">
+                            <i class="fas fa-language"></i>
+                            <span class="guru-badge">Guru Bahasa</span>
+                        </div>
+                        <div class="guru-info">
+                            <h3>Rina Setyawati, M.Pd</h3>
+                            <span class="guru-mapel">Bahasa Inggris</span>
+                            <div class="guru-detail">
+                                <span><i class="fas fa-graduation-cap"></i> S2 Linguistik</span>
+                                <span><i class="fas fa-certificate"></i> 11 Tahun</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== STAFF TENAGA KEPENDIDIKAN ===== -->
+        <section class="staff-section">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">Staff Tenaga Kependidikan</h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Support system yang profesional dan ramah</p>
+
+                <div class="staff-grid" data-aos="fade-up" data-aos-delay="200">
+                    <div class="staff-card">
+                        <div class="staff-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <h3>Heppy Damayanti, S.Pd</h3>
+                        <p class="staff-position">Kepala Tata Usaha (KTU)</p>
+                        <div class="staff-detail">
+                            <span><i class="fas fa-graduation-cap"></i> S1 Pendidikan</span>
+                            <span><i class="fas fa-certificate"></i> 12 Tahun</span>
+                        </div>
+                    </div>
+
+                    <div class="staff-card">
+                        <div class="staff-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h3>Indraswati, S.Pd</h3>
+                        <p class="staff-position">Kepala Perpustakaan</p>
+                        <div class="staff-detail">
+                            <span><i class="fas fa-graduation-cap"></i> S1 Pendidikan</span>
+                            <span><i class="fas fa-certificate"></i> 8 Tahun</span>
+                        </div>
+                    </div>
+
+                    <div class="staff-card">
+                        <div class="staff-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3>M. Ridwan, S.Kom</h3>
+                        <p class="staff-position">Operator & IT Support</p>
+                        <div class="staff-detail">
+                            <span><i class="fas fa-graduation-cap"></i> S1 Komputer</span>
+                            <span><i class="fas fa-certificate"></i> 5 Tahun</span>
+                        </div>
+                    </div>
+
+                    <div class="staff-card">
+                        <div class="staff-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Slamet Riyadi</h3>
+                        <p class="staff-position">Keamanan Madrasah</p>
+                        <div class="staff-detail">
+                            <span><i class="fas fa-certificate"></i> 10 Tahun</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== STATISTIK ===== -->
+        <section class="stats-section">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-card" data-aos="zoom-in">
+                        <div class="stat-number">86</div>
+                        <div class="stat-label">Total Guru & Staff</div>
+                    </div>
+                    <div class="stat-card" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="stat-number">42</div>
+                        <div class="stat-label">Guru PNS</div>
+                    </div>
+                    <div class="stat-card" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="stat-number">44</div>
+                        <div class="stat-label">Guru Honorer</div>
+                    </div>
+                    <div class="stat-card" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="stat-number">65%</div>
+                        <div class="stat-label">Berkualifikasi S2/S3</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== NAVIGASI ===== -->
+        <div class="container">
+            <div class="detail-navigation" data-aos="fade-up">
+                <a href="struktur.html" class="nav-button prev">
+                    <i class="fas fa-arrow-left"></i> Struktur Organisasi
+                </a>
+                <a href="../index.html" class="nav-button home">
+                    <i class="fas fa-home"></i> Beranda
+                </a>
+                <a href="fasilitas.html" class="nav-button next">
+                    Fasilitas <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 MA Ma'arif Kalikuning. All Rights Reserved.</p>
+            <p>Kalikuning, Bojonegoro, Jawa Timur | Email: info@mansaro.sch.id</p>
+        </div>
+    </footer>
+
+    <!-- ===== SCRIPTS ===== -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        // Filter functionality
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const guruCards = document.querySelectorAll('.guru-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active button
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.getAttribute('data-filter');
+
+                guruCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
