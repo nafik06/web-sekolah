@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perpustakaan Digital - MA Ma'arif Kalikuning</title>
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../assets/css/detail-styles.css">
+    <link rel="stylesheet" href="../assets/css/layanan.css">
+    
+    <style>
+        /* Additional styles for perpustakaan */
+        .search-section {
+            margin-bottom: 40px;
+        }
+        
+        .search-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .search-box {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .search-input {
+            flex: 1;
+            padding: 18px 25px;
+            border: 2px solid #dee2e6;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        
+        .search-input:focus {
+            border-color: #9b59b6;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(155, 89, 182, 0.1);
+        }
+        
+        .search-btn {
+            background: linear-gradient(to right, #9b59b6, #8e44ad);
+            color: white;
+            border: none;
+            padding: 0 40px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .search-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(155, 89, 182, 0.4);
+        }
+        
+        .search-filters {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-select {
+            padding: 12px 25px;
+            border: 2px solid #dee2e6;
+            border-radius: 10px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            background: white;
+            cursor: pointer;
+            transition: border-color 0.3s ease;
+            min-width: 200px;
+        }
+        
+        .filter-select:focus {
+            border-color: #9b59b6;
+            outline: none;
+        }
+        
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 35px;
+            margin-top: 40px;
+        }
+        
+        .book-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(155, 89, 182, 0.1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .book-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .book-cover {
+            height: 250px;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            position: relative;
+        }
+        
+        .book-cover::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(to right, #9b59b6, #8e44ad);
+        }
+        
+        .book-cover i {
+            font-size: 4rem;
+            color: #9b59b6;
+            opacity: 0.8;
+        }
+        
+        .book-content {
+            padding: 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .book-category {
+            display: inline-block;
+            background: rgba(155, 89, 182, 0.1);
+            color: #8e44ad;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .book-title {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.4;
+        }
+        
+        .book-author {
+            color: #6c757d;
+            margin-bottom: 15px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+        }
+        
+        .book-desc {
+            color: #6c757d;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            font-family: 'Poppins', sans-serif;
+            flex: 1;
+        }
+        
+        .book-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            color: #95a5a6;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .book-status {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 15px;
+        }
+        
+        .status-available {
+            background: rgba(46, 204, 113, 0.1);
+            color: #27ae60;
+        }
+        
+        .status-borrowed {
+            background: rgba(231, 76, 60, 0.1);
+            color: #c0392b;
+        }
+        
+        .btn-book {
+            display: inline-block;
+            background: linear-gradient(to right, #9b59b6, #8e44ad);
+            color: white;
+            padding: 14px 30px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+        
+        .btn-book:hover {
+            background: linear-gradient(to right, #8e44ad, #7d3c98);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(155, 89, 182, 0.4);
+        }
+        
+        .collections-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+            margin-top: 40px;
+        }
+        
+        .collection-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(155, 89, 182, 0.1);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .collection-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(to right, #9b59b6, #8e44ad);
+            transform: scaleX(0);
+            transition: transform 0.5s ease;
+        }
+        
+        .collection-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .collection-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .collection-icon {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            transition: all 0.4s ease;
+        }
+        
+        .collection-card:hover .collection-icon {
+            transform: scale(1.1) rotate(10deg);
+        }
+        
+        .collection-icon i {
+            font-size: 2.2rem;
+            color: white;
+        }
+        
+        .collection-card h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .collection-count {
+            display: inline-block;
+            background: rgba(155, 89, 182, 0.1);
+            color: #8e44ad;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .collection-card p {
+            color: #6c757d;
+            line-height: 1.7;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 25px;
+        }
+        
+        .btn-collection {
+            display: inline-block;
+            background: linear-gradient(to right, #9b59b6, #8e44ad);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-collection:hover {
+            background: linear-gradient(to right, #8e44ad, #7d3c98);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(155, 89, 182, 0.4);
+        }
+        
+        .library-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+            padding: 30px;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 15px;
+        }
+        
+        .library-stat {
+            text-align: center;
+            padding: 25px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .library-stat i {
+            font-size: 2.5rem;
+            color: #9b59b6;
+            margin-bottom: 15px;
+        }
+        
+        .library-stat .number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #2c3e50;
+            font-family: 'Montserrat', sans-serif;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .library-stat .label {
+            color: #6c757d;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        @media (max-width: 768px) {
+            .search-box {
+                flex-direction: column;
+            }
+            
+            .search-btn {
+                padding: 18px;
+            }
+            
+            .search-filters {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .filter-select {
+                min-width: 100%;
+            }
+            
+            .books-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .collections-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .library-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body class="detail-page layanan-page">
+    <!-- ===== HEADER ===== -->
+    <header class="detail-header">
+        <div class="container">
+            <div class="detail-breadcrumb" data-aos="fade-right">
+                <a href="../index.html"><i class="fas fa-home"></i> Beranda</a> 
+                <i class="fas fa-chevron-right"></i>
+                <a href="#">Layanan</a> 
+                <i class="fas fa-chevron-right"></i>
+                <span>Perpustakaan Digital</span>
+            </div>
+            
+            <h1 class="detail-page-title" data-aos="fade-up">Perpustakaan Digital MA Ma'arif Kalikuning</h1>
+            <p class="detail-page-subtitle" data-aos="fade-up" data-aos-delay="100">
+                Akses ribuan buku digital, jurnal, dan referensi akademik secara online
+            </p>
+            
+            <div class="hero-stats" data-aos="fade-up" data-aos-delay="200">
+                <div class="stat-item">
+                    <i class="fas fa-book"></i>
+                    <span>10,000+ Koleksi</span>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-laptop"></i>
+                    <span>Akses 24/7</span>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-search"></i>
+                    <span>Pencarian Cerdas</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="detail-main">
+        <section class="detail-content">
+            <div class="container">
+                <!-- Search Section -->
+                <div class="detail-card" data-aos="fade-up">
+                    <div class="detail-card-header">
+                        <div class="detail-card-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h2 class="detail-card-title">Cari Koleksi Perpustakaan</h2>
+                    </div>
+                    
+                    <div class="search-section">
+                        <div class="search-container">
+                            <div class="search-box">
+                                <input type="text" class="search-input" placeholder="Cari judul buku, pengarang, atau kata kunci...">
+                                <button class="search-btn"><i class="fas fa-search"></i> Cari</button>
+                            </div>
+                            
+                            <div class="search-filters">
+                                <select class="filter-select">
+                                    <option value="">Semua Kategori</option>
+                                    <option value="sains">Sains & Teknologi</option>
+                                    <option value="agama">Agama & Spiritual</option>
+                                    <option value="sastra">Sastra & Bahasa</option>
+                                    <option value="sejarah">Sejarah & Sosial</option>
+                                </select>
+                                
+                                <select class="filter-select">
+                                    <option value="">Semua Format</option>
+                                    <option value="ebook">E-Book</option>
+                                    <option value="pdf">PDF</option>
+                                    <option value="audio">Audio Book</option>
+                                    <option value="video">Video</option>
+                                </select>
+                                
+                                <select class="filter-select">
+                                    <option value="">Status Ketersediaan</option>
+                                    <option value="available">Tersedia</option>
+                                    <option value="borrowed">Dipinjam</option>
+                                    <option value="digital">Digital Only</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Library Stats -->
+                    <div class="library-stats">
+                        <div class="library-stat">
+                            <i class="fas fa-book-open"></i>
+                            <span class="number">10,245</span>
+                            <span class="label">Total Koleksi</span>
+                        </div>
+                        <div class="library-stat">
+                            <i class="fas fa-download"></i>
+                            <span class="number">3,891</span>
+                            <span class="label">E-Book</span>
+                        </div>
+                        <div class="library-stat">
+                            <i class="fas fa-users"></i>
+                            <span class="number">1,250</span>
+                            <span class="label">Pengguna Aktif</span>
+                        </div>
+                        <div class="library-stat">
+                            <i class="fas fa-clock"></i>
+                            <span class="number">24/7</span>
+                            <span class="label">Akses Online</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Koleksi Buku Populer -->
+                <div class="detail-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="detail-card-header">
+                        <div class="detail-card-icon">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <h2 class="detail-card-title">Koleksi Populer</h2>
+                        <p>Buku-buku yang paling sering dipinjam dan dibaca</p>
+                    </div>
+                    
+                    <div class="books-grid">
+                        <!-- Buku 1 -->
+                        <div class="book-card" data-aos="fade-up">
+                            <div class="book-cover">
+                                <i class="fas fa-microscope"></i>
+                            </div>
+                            <div class="book-content">
+                                <span class="book-category">Sains</span>
+                                <h3 class="book-title">Fisika Modern untuk SMA/MA</h3>
+                                <p class="book-author">Prof. Dr. Ahmad Fauzi</p>
+                                <p class="book-desc">Pembahasan lengkap fisika modern dengan contoh soal dan penyelesaian.</p>
+                                <div class="book-meta">
+                                    <span><i class="fas fa-calendar"></i> 2023</span>
+                                    <span><i class="fas fa-file"></i> 350 halaman</span>
+                                </div>
+                                <span class="book-status status-available">Tersedia</span>
+                                <button class="btn-book"><i class="fas fa-book-open"></i> Baca Online</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Buku 2 -->
+                        <div class="book-card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="book-cover">
+                                <i class="fas fa-quran"></i>
+                            </div>
+                            <div class="book-content">
+                                <span class="book-category">Agama</span>
+                                <h3 class="book-title">Tafsir Al-Quran Kontemporer</h3>
+                                <p class="book-author">Ust. Abdullah Gymnastiar</p>
+                                <p class="book-desc">Penafsiran Al-Quran dengan pendekatan modern dan kontekstual.</p>
+                                <div class="book-meta">
+                                    <span><i class="fas fa-calendar"></i> 2024</span>
+                                    <span><i class="fas fa-file"></i> 280 halaman</span>
+                                </div>
+                                <span class="book-status status-available">Tersedia</span>
+                                <button class="btn-book"><i class="fas fa-download"></i> Download PDF</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Buku 3 -->
+                        <div class="book-card" data-aos="fade-up" data-aos-delay="200">
+                            <div class="book-cover">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="book-content">
+                                <span class="book-category">Teknologi</span>
+                                <h3 class="book-title">Pemrograman Python untuk Pemula</h3>
+                                <p class="book-author">Rizki Ahmad, M.Kom</p>
+                                <p class="book-desc">Belajar pemrograman Python dari dasar hingga menengah dengan studi kasus.</p>
+                                <div class="book-meta">
+                                    <span><i class="fas fa-calendar"></i> 2025</span>
+                                    <span><i class="fas fa-file"></i> 420 halaman</span>
+                                </div>
+                                <span class="book-status status-borrowed">Dipinjam (kembali: 25 Jan)</span>
+                                <button class="btn-book"><i class="fas fa-bell"></i> Jadwalkan Peminjaman</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Buku 4 -->
+                        <div class="book-card" data-aos="fade-up" data-aos-delay="300">
+                            <div class="book-cover">
+                                <i class="fas fa-language"></i>
+                            </div>
+                            <div class="book-content">
+                                <span class="book-category">Bahasa</span>
+                                <h3 class="book-title">Mastering English Grammar</h3>
+                                <p class="book-author">Maria Ulfa, S.Pd</p>
+                                <p class="book-desc">Panduan lengkap tata bahasa Inggris untuk persiapan UTBK dan TOEFL.</p>
+                                <div class="book-meta">
+                                    <span><i class="fas fa-calendar"></i> 2024</span>
+                                    <span><i class="fas fa-file"></i> 320 halaman</span>
+                                </div>
+                                <span class="book-status status-available">Tersedia</span>
+                                <button class="btn-book"><i class="fas fa-headphones"></i> Audio Book</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Koleksi Digital -->
+                <div class="detail-card" data-aos="fade-up" data-aos-delay="150">
+                    <div class="detail-card-header">
+                        <div class="detail-card-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h2 class="detail-card-title">Koleksi Digital</h2>
+                        <p>Berbagai jenis koleksi digital yang tersedia</p>
+                    </div>
+                    
+                    <div class="collections-grid">
+                        <div class="collection-card">
+                            <div class="collection-icon">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <h3>E-Book</h3>
+                            <div class="collection-count">5,234 Judul</div>
+                            <p>Koleksi buku digital dalam format PDF, ePub, dan Mobi untuk semua mata pelajaran</p>
+                            <button class="btn-collection">Jelajahi E-Book</button>
+                        </div>
+                        
+                        <div class="collection-card">
+                            <div class="collection-icon">
+                                <i class="fas fa-newspaper"></i>
+                            </div>
+                            <h3>Jurnal & Artikel</h3>
+                            <div class="collection-count">2,100 Artikel</div>
+                            <p>Jurnal penelitian, artikel akademik, dan paper dari berbagai universitas</p>
+                            <button class="btn-collection">Lihat Jurnal</button>
+                        </div>
+                        
+                        <div class="collection-card">
+                            <div class="collection-icon">
+                                <i class="fas fa-video"></i>
+                            </div>
+                            <h3>Video Edukasi</h3>
+                            <div class="collection-count">850 Video</div>
+                            <p>Video pembelajaran, tutorial, dan dokumenter pendidikan dari berbagai sumber</p>
+                            <button class="btn-collection">Tonton Video</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Panduan Peminjaman -->
+                <div class="detail-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="detail-card-header">
+                        <div class="detail-card-icon">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <h2 class="detail-card-title">Panduan Peminjaman</h2>
+                    </div>
+                    
+                    <div class="program-grid">
+                        <div class="program-card">
+                            <div class="program-header">
+                                <div class="program-icon">
+                                    <i class="fas fa-sign-in-alt"></i>
+                                </div>
+                                <h3 class="program-title">Login & Akses</h3>
+                            </div>
+                            <ul class="program-results">
+                                <li><i class="fas fa-check"></i> Gunakan akun E-Learning yang sama</li>
+                                <li><i class="fas fa-check"></i> Cari buku melalui search engine</li>
+                                <li><i class="fas fa-check"></i> Filter berdasarkan kategori dan status</li>
+                                <li><i class="fas fa-check"></i> Baca preview atau deskripsi buku</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="program-card">
+                            <div class="program-header">
+                                <div class="program-icon">
+                                    <i class="fas fa-book-medical"></i>
+                                </div>
+                                <h3 class="program-title">Peminjaman Buku</h3>
+                            </div>
+                            <ul class="program-results">
+                                <li><i class="fas fa-check"></i> Maksimal 3 buku fisik per peminjaman</li>
+                                <li><i class="fas fa-check"></i> Durasi peminjaman: 7 hari kerja</li>
+                                <li><i class="fas fa-check"></i> Perpanjangan maksimal 2 kali</li>
+                                <li><i class="fas fa-check"></i> Denda keterlambatan: Rp 1.000/hari</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="program-card">
+                            <div class="program-header">
+                                <div class="program-icon">
+                                    <i class="fas fa-download"></i>
+                                </div>
+                                <h3 class="program-title">Akses Digital</h3>
+                            </div>
+                            <ul class="program-results">
+                                <li><i class="fas fa-check"></i> E-Book bisa dibaca online atau download</li>
+                                <li><i class="fas fa-check"></i> Akses 24/7 tanpa batas waktu</li>
+                                <li><i class="fas fa-check"></i> Simpan di library pribadi</li>
+                                <li><i class="fas fa-check"></i> Sinkronisasi antar perangkat</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Jam Operasional -->
+                <div class="detail-card" data-aos="fade-up" data-aos-delay="250">
+                    <div class="detail-card-header">
+                        <div class="detail-card-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h2 class="detail-card-title">Jam Operasional</h2>
+                    </div>
+                    
+                    <div class="schedule-container">
+                        <div class="schedule-table-container">
+                            <table class="schedule-table">
+                                <thead>
+                                    <tr>
+                                        <th>Hari</th>
+                                        <th>Jam Operasional</th>
+                                        <th>Layanan</th>
+                                        <th>Petugas</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Senin - Kamis</td>
+                                        <td>07:30 - 16:00</td>
+                                        <td>Peminjaman & Pengembalian Buku Fisik</td>
+                                        <td>Bu Siti, Bu Ani</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Jumat</td>
+                                        <td>07:30 - 14:00</td>
+                                        <td>Peminjaman & Konsultasi Referensi</td>
+                                        <td>Bu Siti</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Sabtu</td>
+                                        <td>08:00 - 12:00</td>
+                                        <td>Layanan Digital & E-Book</td>
+                                        <td>Pak Ahmad</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Minggu & Libur</td>
+                                        <td>24/7 Online</td>
+                                        <td>Akses E-Book & Digital Collection</td>
+                                        <td>System Online</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="contact-info" style="margin-top: 30px; text-align: center;">
+                            <p><i class="fas fa-phone"></i> Kontak Perpustakaan: (0353) 8812345 ext. 456</p>
+                            <p><i class="fas fa-envelope"></i> Email: perpustakaan@mansaro.sch.id</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <div class="detail-navigation" data-aos="fade-up">
+                    <a href="rapor-digital.html" class="nav-button prev">
+                        <i class="fas fa-arrow-left"></i> Rapor Digital
+                    </a>
+                    <a href="../index.html" class="nav-button home">
+                        <i class="fas fa-home"></i> Beranda
+                    </a>
+                    <a href="administrasi.html" class="nav-button next">
+                        Administrasi <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="detail-footer">
+        <div class="container">
+            <p>&copy; 2026 MAN 1 Bojonegoro. Seluruh hak cipta dilindungi.</p>
+            <p>Jl. Monginsidi No. 123, Bojonegoro, Jawa Timur | Perpustakaan Digital MANSARO</p>
+        </div>
+    </footer>
+
+    <!-- ===== SCRIPTS ===== -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // Search functionality
+            const searchBtn = document.querySelector('.search-btn');
+            const searchInput = document.querySelector('.search-input');
+            
+            searchBtn.addEventListener('click', function() {
+                const query = searchInput.value.trim();
+                if (query) {
+                    alert(`Mencari: "${query}"\n\nHasil pencarian sedang dimuat...`);
+                } else {
+                    alert('Silakan masukkan kata kunci pencarian.');
+                }
+            });
+            
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    searchBtn.click();
+                }
+            });
+            
+            // Book buttons functionality
+            const bookButtons = document.querySelectorAll('.btn-book');
+            bookButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const bookCard = this.closest('.book-card');
+                    const bookTitle = bookCard.querySelector('.book-title').textContent;
+                    const bookStatus = bookCard.querySelector('.book-status').textContent;
+                    const buttonText = this.textContent.trim();
+                    
+                    if (buttonText.includes('Baca Online') || buttonText.includes('Download')) {
+                        alert(`Membuka buku:\n\n"${bookTitle}"\n\nStatus: ${bookStatus}\n\nBuku sedang dimuat...`);
+                    } else if (buttonText.includes('Jadwalkan')) {
+                        alert(`Menjadwalkan peminjaman:\n\n"${bookTitle}"\n\nAnda akan menerima notifikasi ketika buku tersedia.`);
+                    }
+                });
+            });
+            
+            // Collection buttons
+            const collectionButtons = document.querySelectorAll('.btn-collection');
+            collectionButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const collectionCard = this.closest('.collection-card');
+                    const collectionName = collectionCard.querySelector('h3').textContent;
+                    alert(`Membuka koleksi: ${collectionName}\n\nKoleksi sedang dimuat...`);
+                });
+            });
+            
+            // Table row click
+            const tableRows = document.querySelectorAll('.schedule-table tbody tr');
+            tableRows.forEach(row => {
+                row.addEventListener('click', function() {
+                    const day = this.children[0].textContent;
+                    const hours = this.children[1].textContent;
+                    const service = this.children[2].textContent;
+                    const officer = this.children[3].textContent;
+                    
+                    alert(`Detail Layanan:\n\nHari: ${day}\nJam: ${hours}\nLayanan: ${service}\nPetugas: ${officer}`);
+                });
+            });
+            
+            // Filter select change
+            const filterSelects = document.querySelectorAll('.filter-select');
+            filterSelects.forEach(select => {
+                select.addEventListener('change', function() {
+                    if (this.value) {
+                        console.log(`Filter dipilih: ${this.value}`);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

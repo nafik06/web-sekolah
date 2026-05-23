@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organisasi Siswa - MA Ma'arif Kalikuning</title>
+    
+   <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../assets/css/detail-styles.css">
+    <link rel="stylesheet" href="../assets/css/layanan.css">
+    
+    <style>
+        /* Additional styles for administrasi */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+            margin-top: 40px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            padding: 35px 30px;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(52, 152, 219, 0.1);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(to right, #3498db, #f39c12);
+            transform: scaleX(0);
+            transition: transform 0.5s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            transition: all 0.4s ease;
+        }
+        
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(10deg);
+        }
+        
+        .service-icon i {
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .service-card h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .service-card p {
+            color: #6c757d;
+            margin-bottom: 25px;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .service-badge {
+            display: inline-block;
+            background: rgba(243, 156, 18, 0.1);
+            color: #f39c12;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .btn-service {
+            display: inline-block;
+            background: linear-gradient(to right, #3498db, #2980b9);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+        
+        .btn-service:hover {
+            background: linear-gradient(to right, #2980b9, #1a5276);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
+        }
+        
+        .forms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .form-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            border: 2px dashed #dee2e6;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .form-card:hover {
+            background: white;
+            border-color: #3498db;
+            transform: translateY(-5px);
+        }
+        
+        .form-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+        
+        .form-icon i {
+            font-size: 1.8rem;
+            color: white;
+        }
+        
+        .form-card h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .form-card p {
+            color: #6c757d;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .btn-form {
+            display: inline-block;
+            background: #f39c12;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+        }
+        
+        .btn-form:hover {
+            background: #e67e22;
+            transform: translateY(-3px);
+        }
+        
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .payment-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+        
+        .payment-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .payment-icon {
+            font-size: 2.5rem;
+            color: #27ae60;
+            margin-bottom: 15px;
+        }
+        
+        .payment-card h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .payment-card p {
+            color: #6c757d;
+            font-size: 0.9rem;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .contact-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .contact-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .contact-card h4 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .contact-details {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .contact-details li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .contact-details i {
+            color: #3498db;
+            width: 20px;
+        }
+        
+        .administration-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+            padding: 30px;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 15px;
+        }
+        
+        .admin-stat {
+            text-align: center;
+            padding: 25px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .admin-stat i {
+            font-size: 2.5rem;
+            color: #3498db;
+            margin-bottom: 15px;
+        }
+        
+        .admin-stat .number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #2c3e50;
+            font-family: 'Montserrat', sans-serif;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .admin-stat .label {
+            color: #6c757d;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        @media (max-width: 768px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .forms-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .payment-methods {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .administration-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+      .detail-page-title {
+    color: white;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+}
+
+.detail-page-subtitle {
+    color: white;
+    text-shadow: 1px 1px 6px rgba(0,0,0,0.5);
+}
+
+.detail-breadcrumb a,
+.detail-breadcrumb span,
+.detail-breadcrumb i {
+    color: white;
+}
+    </style>
+</head>
+<body class="detail-page">
+    <!-- ===== HEADER ===== -->
+    <header class="detail-header">
+        <div class="container">
+            <div class="detail-breadcrumb" data-aos="fade-right">
+                <a href="../index.html"><i class="fas fa-home"></i> Beranda</a> 
+                <i class="fas fa-chevron-right"></i>
+                <a href="#">Kesiswaan</a> 
+                <i class="fas fa-chevron-right"></i>
+                <span>Organisasi Siswa</span>
+            </div>
+            
+            <h1 class="detail-page-title" data-aos="fade-up">Organisasi Siswa MA Ma'arif Kalikuning</h1>
+            <p class="detail-page-subtitle" data-aos="fade-up" data-aos-delay="100">
+                Wadah pengembangan diri dan kepemimpinan siswa melalui berbagai organisasi intra dan ekstra
+            </p>
+        </div>
+    </header>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="detail-main">
+        <section class="detail-content">
+            <div class="container">
+                <!-- OSIS -->
+                <div class="detail-card" data-aos="fade-up">
+                    <div class="detail-card-header">
+                        <div class="detail-card-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h2 class="detail-card-title">Organisasi Siswa Intra Sekolah (OSIS)</h2>
+                    </div>
+                    
+                    <div class="organisasi-grid">
+                        <div class="organisasi-card osis" data-aos="zoom-in">
+                            <div class="organisasi-header">
+                                <div class="organisasi-icon">
+                                    <i class="fas fa-flag"></i>
+                                </div>
+                                <h3>OSIS MA Ma'arif Kalikuning</h3>
+                                <p>Organisasi Siswa Intra Sekolah</p>
+                            </div>
+                            <div class="organisasi-content">
+                                <p>Organisasi resmi dan satu-satunya di MA Ma'arif Kalikuning yang menjadi wadah bagi siswa untuk mengembangkan potensi kepemimpinan dan organisasi.</p>
+                                <ul>
+                                    <li><i class="fas fa-check"></i> Ketua: Ahmad Rizki (XII IPA 1)</li>
+                                    <li><i class="fas fa-check"></i> Wakil: Siti Aisyah (XII IPA 2)</li>
+                                    <li><i class="fas fa-check"></i> Sekretaris: Budi Santoso (XI IPA 1)</li>
+                                    <li><i class="fas fa-check"></i> Bendahara: Rina Wulandari (XI IPS 1)</li>
+                                    <li><i class="fas fa-check"></i> 8 Bidang & 25 Anggota</li>
+                                </ul>
+                                <a href="osis.html" class="btn-link">Lihat Struktur Lengkap <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        
+                        <!-- <div class="organisasi-card mpk" data-aos="zoom-in" data-aos-delay="100">
+                            <div class="organisasi-header">
+                                <div class="organisasi-icon">
+                                    <i class="fas fa-gavel"></i>
+                                </div>
+                                <h3>MPK MANSARO</h3>
+                                <p>Majelis Perwakilan Kelas</p>
+                            </div>
+                            <div class="organisasi-content">
+                                <p>Lembaga legislatif siswa yang bertugas mengawasi, mengevaluasi, dan memberikan masukan terhadap kinerja OSIS serta menyelenggarakan pemilihan OSIS.</p>
+                                <ul>
+                                    <li><i class="fas fa-check"></i> Ketua: Muhammad Fajar (XII IPA 3)</li>
+                                    <li><i class="fas fa-check"></i> Wakil: Nurul Hikmah (XII IPS 2)</li>
+                                    <li><i class="fas fa-check"></i> Sekretaris: Agus Riyanto (XI IPA 2)</li>
+                                    <li><i class="fas fa-check"></i> Bendahara: Sri Wahyuni (XI IPS 3)</li>
+                                    <li><i class="fas fa-check"></i> 24 Anggota (1 per kelas)</li>
+                                </ul>
+                                <a href="#" class="btn-link">Lihat Program Kerja <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+
+                <!-- Organisasi Keagamaan -->
+                <div class="detail-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="detail-card-header">
+                        <div class="detail-card-icon">
+                            <i class="fas fa-mosque"></i>
+                        </div>
+                        <h2 class="detail-card-title">Organisasi Keagamaan</h2>
+                    </div>
+                    
+                    <div class="organisasi-grid">
+                        <div class="organisasi-card rohis" data-aos="zoom-in">
+                            <div class="organisasi-header">
+                                <div class="organisasi-icon">
+                                    <i class="fas fa-quran"></i>
+                                </div>
+                                <h3>ROHIS MA Ma'arif Kalikuning</h3>
+                                <p>Rohani Islam</p>
+                            </div>
+                            <div class="organisasi-content">
+                                <p>Organisasi yang membina kehidupan beragama Islam di lingkungan madrasah melalui berbagai kegiatan keislaman dan pengembangan karakter islami.</p>
+                                <ul>
+                                    <li><i class="fas fa-check"></i> Ketua: Umar Faruq (XII Agama)</li>
+                                    <li><i class="fas fa-check"></i> Wakil: Aisyah Fatimah (XI IPA 3)</li>
+                                    <li><i class="fas fa-check"></i> Bidang Dakwah & Tabligh</li>
+                                    <li><i class="fas fa-check"></i> Bidang Tahfidz & Tilawah</li>
+                                    <li><i class="fas fa-check"></i> Bidang Kajian & Diskusi</li>
+                                </ul>
+                                <a href="#" class="btn-link">Jadwal Kegiatan <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        
+                        <div class="organisasi-card pramuka" data-aos="zoom-in" data-aos-delay="100">
+                            <div class="organisasi-header">
+                                <div class="organisasi-icon">
+                                    <i class="fas fa-campground"></i>
+                                </div>
+                                <h3>PRAMUKA MA Ma'arif Kalikuning</h3>
+                                <p>Gudep 01.001-01.002</p>
+                            </div>
+                            <div class="organisasi-content">
+                                <p>Gerakan Pramuka MA Ma'arif Kalikuning yang mengembangkan karakter, kepemimpinan, dan kecakapan hidup siswa melalui kegiatan kepramukaan.</p>
+                                <ul>
+                                    <li><i class="fas fa-check"></i> Pembina: Dra. Siti Aminah, M.Pd</li>
+                                    <li><i class="fas fa-check"></i> Pradana: Joko Susilo (XII IPA 1)</li>
+                                    <li><i class="fas fa-check"></i> 150 Anggota Aktif</li>
+                                    <li><i class="fas fa-check"></i> Gugus Depan Putra & Putri</li>
+                                    <li><i class="fas fa-check"></i> Berprestasi Tingkat Nasional</li>
+                                </ul>
+                                <a href="#" class="btn-link">Info Kegiatan <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Program Kerja -->
+                <div class="detail-card" data-aos="fade-up" data-aos-delay="150">
+                    <div class="detail-card-header">
+                        <div class="detail-card-icon">
+                            <i class="fas fa-clipboard-list"></i>
+                        </div>
+                        <h2 class="detail-card-title">Program Kerja OSIS 2025/2026</h2>
+                    </div>
+                    
+                    <div class="program-grid">
+                        <div class="program-card" data-aos="fade-right">
+                            <div class="program-header">
+                                <div class="program-icon">
+                                    <i class="fas fa-brain"></i>
+                                </div>
+                                <h3 class="program-title">Bidang Ketaqwaan</h3>
+                            </div>
+                            <p class="program-timeline">Januari - Desember 2026</p>
+                            <p class="program-desc">Penguatan iman dan taqwa melalui kegiatan keagamaan rutin dan pembinaan karakter islami.</p>
+                            <ul class="program-results">
+                                <li><i class="fas fa-check-circle"></i> Pesantren Kilat Ramadhan</li>
+                                <li><i class="fas fa-check-circle"></i> Kajian Rutin Jumat Pagi</li>
+                                <li><i class="fas fa-check-circle"></i> Lomba MTQ & Kaligrafi</li>
+                                <li><i class="fas fa-check-circle"></i> Bakti Sosial Idul Fitri</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="program-card" data-aos="fade-up">
+                            <div class="program-header">
+                                <div class="program-icon">
+                                    <i class="fas fa-book-open"></i>
+                                </div>
+                                <h3 class="program-title">Bidang Akademik</h3>
+                            </div>
+                            <p class="program-timeline">Juli 2025 - Juni 2026</p>
+                            <p class="program-desc">Peningkatan prestasi akademik melalui program pendukung pembelajaran dan kompetisi.</p>
+                            <ul class="program-results">
+                                <li><i class="fas fa-check-circle"></i> Bimbingan Belajar Siswa</li>
+                                <li><i class="fas fa-check-circle"></i> Olimpiade Sains Internal</li>
+                                <li><i class="fas fa-check-circle"></i> Kelompok Belajar Mandiri</li>
+                                <li><i class="fas fa-check-circle"></i> Seminar Motivasi Belajar</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="program-card" data-aos="fade-left">
+                            <div class="program-header">
+                                <div class="program-icon">
+                                    <i class="fas fa-futbol"></i>
+                                </div>
+                                <h3 class="program-title">Bidang Olahraga & Seni</h3>
+                            </div>
+                            <p class="program-timeline">September 2025 - Mei 2026</p>
+                            <p class="program-desc">Pengembangan bakat dan minat siswa di bidang olahraga, seni, dan kreativitas.</p>
+                            <ul class="program-results">
+                                <li><i class="fas fa-check-circle"></i> Turnamen Futsal Antar Kelas</li>
+                                <li><i class="fas fa-check-circle"></i> Festival Seni Islami</li>
+                                <li><i class="fas fa-check-circle"></i> Lomba Band & Nasyid</li>
+                                <li><i class="fas fa-check-circle"></i> Pameran Karya Siswa</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pengurus Inti -->
+                <div class="detail-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="detail-card-header">
+                        <div class="detail-card-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h2 class="detail-card-title">Pengurus Inti OSIS</h2>
+                    </div>
+                    
+                    <div class="pengurus-grid">
+                        <div class="pengurus-card" data-aos="flip-up">
+                            <div class="pengurus-img">
+                                <img src="https://placehold.co/300x200/004d00/ffffff?text=Ketua+OSIS" alt="Ketua OSIS">
+                                <div class="pengurus-badge">Ketua OSIS</div>
+                            </div>
+                            <div class="pengurus-info">
+                                <h3>Ahmad Rizki</h3>
+                                <p class="pengurus-position">Ketua OSIS</p>
+                                <p class="pengurus-class">XII IPA 1</p>
+                                <p><i class="fas fa-award"></i> Juara KSM Nasional 2025</p>
+                                <div class="pengurus-contact">
+                                    <a href="#"><i class="fas fa-envelope"></i></a>
+                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                    <a href="#"><i class="fas fa-phone"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="pengurus-card" data-aos="flip-up" data-aos-delay="100">
+                            <div class="pengurus-img">
+                                <img src="https://placehold.co/300x200/27ae60/ffffff?text=Wakil+OSIS" alt="Wakil OSIS">
+                                <div class="pengurus-badge">Wakil Ketua</div>
+                            </div>
+                            <div class="pengurus-info">
+                                <h3>Siti Aisyah</h3>
+                                <p class="pengurus-position">Wakil Ketua OSIS</p>
+                                <p class="pengurus-class">XII IPA 2</p>
+                                <p><i class="fas fa-award"></i> Juara Olimpiade Biologi</p>
+                                <div class="pengurus-contact">
+                                    <a href="#"><i class="fas fa-envelope"></i></a>
+                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                    <a href="#"><i class="fas fa-phone"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="pengurus-card" data-aos="flip-up" data-aos-delay="200">
+                            <div class="pengurus-img">
+                                <img src="https://placehold.co/300x200/2980b9/ffffff?text=Sekretaris" alt="Sekretaris">
+                                <div class="pengurus-badge">Sekretaris</div>
+                            </div>
+                            <div class="pengurus-info">
+                                <h3>Budi Santoso</h3>
+                                <p class="pengurus-position">Sekretaris Umum</p>
+                                <p class="pengurus-class">XI IPA 1</p>
+                                <p><i class="fas fa-award"></i> Juara Debat Bahasa Inggris</p>
+                                <div class="pengurus-contact">
+                                    <a href="#"><i class="fas fa-envelope"></i></a>
+                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                    <a href="#"><i class="fas fa-phone"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="pengurus-card" data-aos="flip-up" data-aos-delay="300">
+                            <div class="pengurus-img">
+                                <img src="https://placehold.co/300x200/e74c3c/ffffff?text=Bendahara" alt="Bendahara">
+                                <div class="pengurus-badge">Bendahara</div>
+                            </div>
+                            <div class="pengurus-info">
+                                <h3>Rina Wulandari</h3>
+                                <p class="pengurus-position">Bendahara Umum</p>
+                                <p class="pengurus-class">XI IPS 1</p>
+                                <p><i class="fas fa-award"></i> Juara Akuntansi Kabupaten</p>
+                                <div class="pengurus-contact">
+                                    <a href="#"><i class="fas fa-envelope"></i></a>
+                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                    <a href="#"><i class="fas fa-phone"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-4" data-aos="fade-up">
+                        <a href="#" class="btn-outline">Lihat Seluruh Pengurus</a>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <div class="detail-navigation" data-aos="fade-up">
+                    <a href="../akademik/kalender.html" class="nav-button prev">
+                        <i class="fas fa-arrow-left"></i> kalender akademik
+                    </a>
+                    <a href="../index.html" class="nav-button home">
+                        <i class="fas fa-home"></i> Beranda
+                    </a>
+                    <a href="ekstrakurikuler.html" class="nav-button next">
+                        Ekstrakurikuler <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="detail-footer">
+        <div class="container">
+            <p style="color: #f8f9fa;">&copy; 2026 MA Ma'arif Kalikuning Seluruh hak cipta dilindungi.</p>
+            <p  style="color: #f8f9fa;">Dsn. Krajan RT 01 RW 03 Ds. Kalikuning Kec. Tulakan Kab. Pacitan</p>
+        </div>
+    </footer>
+
+
+    <!-- ===== SCRIPTS ===== -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+    </script>
+</body>
+</html>

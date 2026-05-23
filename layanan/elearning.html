@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Learning - MA Ma'arif Kalikuning</title>
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../assets/css/detail-styles.css">
+    <link rel="stylesheet" href="../assets/css/layanan.css">
+</head>
+<body class="detail-page">
+    <!-- ===== HEADER ===== -->
+    <header class="detail-header">
+        <div class="container">
+            <div class="detail-breadcrumb" data-aos="fade-right">
+                <a href="../index.html"><i class="fas fa-home"></i> Beranda</a> 
+                <i class="fas fa-chevron-right"></i>
+                <a href="#">Layanan</a> 
+                <i class="fas fa-chevron-right"></i>
+                <span>E-Learning</span>
+            </div>
+            
+            <h1 class="detail-page-title" data-aos="fade-up">E-Learning MA Ma'arif Kalikuning</h1>
+            <p class="detail-page-subtitle" data-aos="fade-up" data-aos-delay="100">
+                Platform Pembelajaran Digital Terintegrasi untuk Siswa dan Guru
+            </p>
+        </div>
+    </header>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="detail-main">
+        <section class="detail-content">
+            <div class="container">
+                <!-- Login Section -->
+                <div class="detail-card" data-aos="fade-up">
+                    <div class="detail-card-header">
+                        <div class="detail-card-icon">
+                            <i class="fas fa-sign-in-alt"></i>
+                        </div>
+                        <h2 class="detail-card-title">Login E-Learning</h2>
+                    </div>
+                    
+                    <div class="login-grid">
+                        <!-- Student Login -->
+                        <div class="login-card student-login">
+                            <div class="login-header">
+                                <div class="login-icon">
+                                    <i class="fas fa-user-graduate"></i>
+                                </div>
+                                <h3>Login Siswa</h3>
+                            </div>
+                            <form class="login-form">
+                                <div class="form-group">
+                                    <label for="nisn">NISN / Username</label>
+                                    <div class="input-with-icon">
+                                        <i class="fas fa-user"></i>
+                                        <input type="text" id="nisn" placeholder="Masukkan NISN" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password-siswa">Password</label>
+                                    <div class="input-with-icon">
+                                        <i class="fas fa-lock"></i>
+                                        <input type="password" id="password-siswa" placeholder="Masukkan password" required>
+                                        <button type="button" class="toggle-password">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="form-options">
+                                    <label class="checkbox">
+                                        <input type="checkbox"> Ingat saya
+                                    </label>
+                                    <a href="#" class="forgot-password">Lupa Password?</a>
+                                </div>
+                                <button type="submit" class="btn-login btn-primary">
+                                    <i class="fas fa-sign-in-alt"></i> Masuk sebagai Siswa
+                                </button>
+                            </form>
+                        </div>
+
+                        <!-- Teacher Login -->
+                        <div class="login-card teacher-login">
+                            <div class="login-header">
+                                <div class="login-icon">
+                                    <i class="fas fa-chalkboard-teacher"></i>
+                                </div>
+                                <h3>Login Guru & Staff</h3>
+                            </div>
+                            <form class="login-form">
+                                <div class="form-group">
+                                    <label for="nip">NIP / Username</label>
+                                    <div class="input-with-icon">
+                                        <i class="fas fa-user-tie"></i>
+                                        <input type="text" id="nip" placeholder="Masukkan NIP" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password-guru">Password</label>
+                                    <div class="input-with-icon">
+                                        <i class="fas fa-lock"></i>
+                                        <input type="password" id="password-guru" placeholder="Masukkan password" required>
+                                        <button type="button" class="toggle-password">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="form-options">
+                                    <label class="checkbox">
+                                        <input type="checkbox"> Ingat saya
+                                    </label>
+                                    <a href="#" class="forgot-password">Lupa Password?</a>
+                                </div>
+                                <button type="submit" class="btn-login btn-secondary">
+                                    <i class="fas fa-sign-in-alt"></i> Masuk sebagai Guru
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <!-- Quick Links -->
+                    <div class="quick-links">
+                        <h3>Akses Cepat Tanpa Login:</h3>
+                        <div class="links-grid">
+                            <a href="#" class="quick-link">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>Jadwal Kelas</span>
+                            </a>
+                            <a href="#" class="quick-link">
+                                <i class="fas fa-book"></i>
+                                <span>Materi Umum</span>
+                            </a>
+                            <a href="#" class="quick-link">
+                                <i class="fas fa-question-circle"></i>
+                                <span>Panduan Pengguna</span>
+                            </a>
+                            <a href="#" class="quick-link">
+                                <i class="fas fa-download"></i>
+                                <span>Download Aplikasi</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fitur E-Learning -->
+                <div class="detail-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="detail-card-header">
+                        <div class="detail-card-icon">
+                            <i class="fas fa-laptop-house"></i>
+                        </div>
+                        <h2 class="detail-card-title">Fitur E-Learning MA Ma'arif Kalikuning</h2>
+                    </div>
+                    
+                    <div class="features-grid">
+                        <div class="feature-card" data-aos="zoom-in">
+                            <div class="feature-icon">
+                                <i class="fas fa-video"></i>
+                            </div>
+                            <h3>Kelas Virtual Live</h3>
+                            <p>Sesi pembelajaran langsung dengan guru melalui platform video conference terintegrasi</p>
+                        </div>
+
+                        <div class="feature-card" data-aos="zoom-in" data-aos-delay="100">
+                            <div class="feature-icon">
+                                <i class="fas fa-tasks"></i>
+                            </div>
+                            <h3>Tugas & Quiz Online</h3>
+                            <p>Pengumpulan tugas dan ujian online dengan sistem penilaian otomatis</p>
+                        </div>
+
+                        <div class="feature-card" data-aos="zoom-in" data-aos-delay="200">
+                            <div class="feature-icon">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <h3>Forum Diskusi</h3>
+                            <p>Ruang diskusi antar siswa dan guru untuk tanya jawab materi pelajaran</p>
+                        </div>
+
+                        <div class="feature-card" data-aos="zoom-in" data-aos-delay="300">
+                            <div class="feature-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h3>Monitoring Progress</h3>
+                            <p>Pemantauan perkembangan belajar siswa secara real-time oleh orang tua</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Materi Pembelajaran -->
+                <div class="detail-card" data-aos="fade-up" data-aos-delay="150">
+                    <div class="detail-card-header">
+                        <div class="detail-card-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h2 class="detail-card-title">Materi Pembelajaran</h2>
+                        <p>Akses materi digital untuk semua mata pelajaran</p>
+                    </div>
+                    
+                    <div class="materials-filter">
+                        <button class="filter-btn active" data-filter="all">Semua</button>
+                        <button class="filter-btn" data-filter="kelas10">Kelas X</button>
+                        <button class="filter-btn" data-filter="kelas11">Kelas XI</button>
+                        <button class="filter-btn" data-filter="kelas12">Kelas XII</button>
+                    </div>
+
+                    <div class="materials-grid">
+                        <!-- Matematika -->
+                        <div class="material-card" data-category="kelas10" data-aos="fade-up">
+                            <div class="material-badge kelas10">Kelas X</div>
+                            <div class="material-icon">
+                                <i class="fas fa-calculator"></i>
+                            </div>
+                            <h3>Matematika Wajib</h3>
+                            <p>Materi aljabar, trigonometri, dan statistika untuk kelas X</p>
+                            <div class="material-info">
+                                <span><i class="fas fa-file-alt"></i> 15 Materi</span>
+                                <span><i class="fas fa-clock"></i> Update: 2 hari lalu</span>
+                            </div>
+                            <a href="#" class="btn-view">Akses Materi</a>
+                        </div>
+
+                        <!-- Fisika -->
+                        <div class="material-card" data-category="kelas10" data-aos="fade-up" data-aos-delay="100">
+                            <div class="material-badge kelas10">Kelas X</div>
+                            <div class="material-icon">
+                                <i class="fas fa-flask"></i>
+                            </div>
+                            <h3>Fisika</h3>
+                            <p>Pengantar fisika dasar dan mekanika untuk pemula</p>
+                            <div class="material-info">
+                                <span><i class="fas fa-file-alt"></i> 12 Materi</span>
+                                <span><i class="fas fa-clock"></i> Update: 1 minggu lalu</span>
+                            </div>
+                            <a href="#" class="btn-view">Akses Materi</a>
+                        </div>
+
+                        <!-- Biologi -->
+                        <div class="material-card" data-category="kelas11" data-aos="fade-up" data-aos-delay="200">
+                            <div class="material-badge kelas11">Kelas XI</div>
+                            <div class="material-icon">
+                                <i class="fas fa-dna"></i>
+                            </div>
+                            <h3>Biologi</h3>
+                            <p>Struktur sel, genetika, dan sistem organ tubuh manusia</p>
+                            <div class="material-info">
+                                <span><i class="fas fa-file-alt"></i> 18 Materi</span>
+                                <span><i class="fas fa-clock"></i> Update: 3 hari lalu</span>
+                            </div>
+                            <a href="#" class="btn-view">Akses Materi</a>
+                        </div>
+
+                        <!-- Agama Islam -->
+                        <div class="material-card" data-category="kelas12" data-aos="fade-up" data-aos-delay="300">
+                            <div class="material-badge kelas12">Kelas XII</div>
+                            <div class="material-icon">
+                                <i class="fas fa-quran"></i>
+                            </div>
+                            <h3>Agama Islam</h3>
+                            <p>Fiqh, akidah akhlak, dan sejarah kebudayaan Islam</p>
+                            <div class="material-info">
+                                <span><i class="fas fa-file-alt"></i> 20 Materi</span>
+                                <span><i class="fas fa-clock"></i> Update: Hari ini</span>
+                            </div>
+                            <a href="#" class="btn-view">Akses Materi</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Jadwal Kelas Online -->
+                <div class="detail-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="detail-card-header">
+                        <div class="detail-card-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h2 class="detail-card-title">Jadwal Kelas Online</h2>
+                        <p>Sesi pembelajaran live minggu ini</p>
+                    </div>
+                    
+                    <div class="schedule-container">
+                        <div class="schedule-table-container">
+                            <table class="schedule-table">
+                                <thead>
+                                    <tr>
+                                        <th>Hari</th>
+                                        <th>Jam</th>
+                                        <th>Mata Pelajaran</th>
+                                        <th>Pengajar</th>
+                                        <th>Platform</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Senin, 12 Jan</td>
+                                        <td>08:00 - 09:30</td>
+                                        <td>Matematika Wajib</td>
+                                        <td>Budi Santoso, M.Pd</td>
+                                        <td>Zoom Meeting</td>
+                                        <td><a href="#" class="btn-join">Join Kelas</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Senin, 12 Jan</td>
+                                        <td>10:00 - 11:30</td>
+                                        <td>Bahasa Indonesia</td>
+                                        <td>Siti Rahayu, M.Pd</td>
+                                        <td>Google Meet</td>
+                                        <td><a href="#" class="btn-join">Join Kelas</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Selasa, 13 Jan</td>
+                                        <td>08:00 - 09:30</td>
+                                        <td>Fisika</td>
+                                        <td>Dr. Ahmad Fauzi</td>
+                                        <td>Zoom Meeting</td>
+                                        <td><a href="#" class="btn-join">Join Kelas</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Rabu, 14 Jan</td>
+                                        <td>09:00 - 10:30</td>
+                                        <td>Bahasa Inggris</td>
+                                        <td>Maria Ulfa, S.Pd</td>
+                                        <td>Microsoft Teams</td>
+                                        <td><a href="#" class="btn-join">Join Kelas</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ -->
+                <div class="detail-card" data-aos="fade-up" data-aos-delay="250">
+                    <div class="detail-card-header">
+                        <div class="detail-card-icon">
+                            <i class="fas fa-question-circle"></i>
+                        </div>
+                        <h2 class="detail-card-title">Pertanyaan Umum</h2>
+                    </div>
+                    
+                    <div class="faq-container">
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h3>Bagaimana cara mendapatkan akun E-Learning?</h3>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Akun E-Learning diberikan oleh sekolah kepada setiap siswa dan guru. Siswa baru akan mendapatkan akun setelah proses PPDB selesai. Jika mengalami masalah, hubungi admin ICT sekolah.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h3>Apa saja fitur yang tersedia untuk orang tua?</h3>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Orang tua dapat memantau perkembangan belajar anak melalui fitur monitoring yang menampilkan kehadiran, nilai tugas, dan progress belajar. Akses diberikan setelah registrasi di website.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h3>Bagaimana jika saya lupa password?</h3>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Gunakan fitur "Lupa Password" di halaman login atau hubungi administrator sekolah melalui email: it.support@mansaro.sch.id dengan melampirkan bukti identitas.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <div class="detail-navigation" data-aos="fade-up">
+                    <a href="rapor-digital.html" class="nav-button prev">
+                        <i class="fas fa-arrow-left"></i> Rapor Digital
+                    </a>
+                    <a href="../index.html" class="nav-button home">
+                        <i class="fas fa-home"></i> Beranda
+                    </a>
+                    <a href="perpustakaan.html" class="nav-button next">
+                        Perpustakaan <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="detail-footer">
+        <div class="container">
+            <p>&copy; 2026 MAN 1 Bojonegoro. Seluruh hak cipta dilindungi.</p>
+            <p>Jl. Monginsidi No. 123, Bojonegoro, Jawa Timur | Email: elearning@mansaro.sch.id</p>
+        </div>
+    </footer>
+
+    <!-- ===== SCRIPTS ===== -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+        
+        // E-Learning Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Toggle password visibility
+            const toggleButtons = document.querySelectorAll('.toggle-password');
+            toggleButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const input = this.parentElement.querySelector('input');
+                    const icon = this.querySelector('i');
+                    
+                    if (input.type === 'password') {
+                        input.type = 'text';
+                        icon.classList.remove('fa-eye');
+                        icon.classList.add('fa-eye-slash');
+                    } else {
+                        input.type = 'password';
+                        icon.classList.remove('fa-eye-slash');
+                        icon.classList.add('fa-eye');
+                    }
+                });
+            });
+
+            // Filter materials
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const materialCards = document.querySelectorAll('.material-card');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const filterValue = this.getAttribute('data-filter');
+                    
+                    materialCards.forEach(card => {
+                        if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                            card.style.display = 'block';
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'translateY(0)';
+                            }, 10);
+                        } else {
+                            card.style.opacity = '0';
+                            card.style.transform = 'translateY(20px)';
+                            setTimeout(() => {
+                                card.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
+            });
+
+            // FAQ accordion
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const answer = this.nextElementSibling;
+                    const icon = this.querySelector('i');
+                    
+                    // Toggle current item
+                    answer.classList.toggle('active');
+                    icon.classList.toggle('fa-chevron-down');
+                    icon.classList.toggle('fa-chevron-up');
+                    
+                    // Close other items
+                    faqQuestions.forEach(otherQuestion => {
+                        if (otherQuestion !== this) {
+                            const otherAnswer = otherQuestion.nextElementSibling;
+                            const otherIcon = otherQuestion.querySelector('i');
+                            otherAnswer.classList.remove('active');
+                            otherIcon.classList.remove('fa-chevron-up');
+                            otherIcon.classList.add('fa-chevron-down');
+                        }
+                    });
+                });
+            });
+
+            // Form submission
+            const loginForms = document.querySelectorAll('.login-form');
+            loginForms.forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    // Simulate login
+                    const submitBtn = this.querySelector('.btn-login');
+                    const originalText = submitBtn.innerHTML;
+                    
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memproses...';
+                    submitBtn.disabled = true;
+                    
+                    setTimeout(() => {
+                        alert('Login berhasil! Mengarahkan ke dashboard...');
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                        // In real implementation, redirect to dashboard
+                        // window.location.href = 'dashboard.html';
+                    }, 1500);
+                });
+            });
+
+            // Quick links functionality
+            const quickLinks = document.querySelectorAll('.quick-link');
+            quickLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const linkName = this.querySelector('span').textContent;
+                    alert(`Mengarahkan ke: ${linkName}\n\nFitur ini sedang dalam pengembangan.`);
+                });
+            });
+
+            // Join class buttons
+            const joinButtons = document.querySelectorAll('.btn-join');
+            joinButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const row = this.closest('tr');
+                    const subject = row.children[2].textContent;
+                    const teacher = row.children[3].textContent;
+                    const time = row.children[1].textContent;
+                    
+                    alert(`Bergabung ke kelas:\n\nMata Pelajaran: ${subject}\nPengajar: ${teacher}\nWaktu: ${time}\n\nLink meeting akan dikirimkan ke email.`);
+                });
+            });
+
+            // View material buttons
+            const viewButtons = document.querySelectorAll('.btn-view');
+            viewButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const card = this.closest('.material-card');
+                    const subject = card.querySelector('h3').textContent;
+                    const desc = card.querySelector('p').textContent;
+                    
+                    alert(`Membuka materi:\n\n${subject}\n\n${desc}\n\nMateri sedang dimuat...`);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalender Akademik - MA Ma'arif Kalikuning</title>
+    
+<!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../assets/css/detail-styles.css">
+    <link rel="stylesheet" href="../assets/css/layanan.css">
+    
+    <style>
+        /* Additional styles for administrasi */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+            margin-top: 40px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            padding: 35px 30px;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(52, 152, 219, 0.1);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(to right, #3498db, #f39c12);
+            transform: scaleX(0);
+            transition: transform 0.5s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            transition: all 0.4s ease;
+        }
+        
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(10deg);
+        }
+        
+        .service-icon i {
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .service-card h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .service-card p {
+            color: #6c757d;
+            margin-bottom: 25px;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .service-badge {
+            display: inline-block;
+            background: rgba(243, 156, 18, 0.1);
+            color: #f39c12;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .btn-service {
+            display: inline-block;
+            background: linear-gradient(to right, #3498db, #2980b9);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+        
+        .btn-service:hover {
+            background: linear-gradient(to right, #2980b9, #1a5276);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
+        }
+        
+        .forms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .form-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            border: 2px dashed #dee2e6;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .form-card:hover {
+            background: white;
+            border-color: #3498db;
+            transform: translateY(-5px);
+        }
+        
+        .form-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+        
+        .form-icon i {
+            font-size: 1.8rem;
+            color: white;
+        }
+        
+        .form-card h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .form-card p {
+            color: #6c757d;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .btn-form {
+            display: inline-block;
+            background: #f39c12;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+        }
+        
+        .btn-form:hover {
+            background: #e67e22;
+            transform: translateY(-3px);
+        }
+        
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .payment-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+        
+        .payment-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .payment-icon {
+            font-size: 2.5rem;
+            color: #27ae60;
+            margin-bottom: 15px;
+        }
+        
+        .payment-card h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .payment-card p {
+            color: #6c757d;
+            font-size: 0.9rem;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .contact-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .contact-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .contact-card h4 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .contact-details {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .contact-details li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .contact-details i {
+            color: #3498db;
+            width: 20px;
+        }
+        
+        .administration-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+            padding: 30px;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 15px;
+        }
+        
+        .admin-stat {
+            text-align: center;
+            padding: 25px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .admin-stat i {
+            font-size: 2.5rem;
+            color: #3498db;
+            margin-bottom: 15px;
+        }
+        
+        .admin-stat .number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #2c3e50;
+            font-family: 'Montserrat', sans-serif;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .admin-stat .label {
+            color: #6c757d;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        @media (max-width: 768px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .forms-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .payment-methods {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .administration-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+      .detail-page-title {
+    color: white;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+}
+
+.detail-page-subtitle {
+    color: white;
+    text-shadow: 1px 1px 6px rgba(0,0,0,0.5);
+}
+
+.detail-breadcrumb a,
+.detail-breadcrumb span,
+.detail-breadcrumb i {
+    color: white;
+}
+    </style>
+</head>
+<body class="detail-page">
+    <!-- ===== HEADER ===== -->
+    <header class="detail-header">
+        <div class="container">
+            <div class="detail-breadcrumb" data-aos="fade-right">
+                <a href="../index.html"><i class="fas fa-home"></i> Beranda</a> 
+                <i class="fas fa-chevron-right"></i>
+                <a href="#">Akademik</a> 
+                <i class="fas fa-chevron-right"></i>
+                <span>Kalender Akademik</span>
+            </div>
+            
+            <h1 class="detail-page-title" data-aos="fade-up">Kalender Akademik 2025/2026</h1>
+            <p class="detail-page-subtitle" data-aos="fade-up" data-aos-delay="100">
+                Jadwal kegiatan akademik dan non-akademik selama tahun pelajaran
+            </p>
+        </div>
+    </header>
+ 
+    <!-- ===== MAIN CONTENT ===== -->
+
+                <!-- Agenda Terdekat -->
+                <div class="detail-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="detail-card-header">
+                        <div class="detail-card-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h2 class="detail-card-title">Agenda Terdekat</h2>
+                    </div>
+                    
+                    <div class="agenda-items">
+                        <div class="agenda-item" data-aos="fade-right">
+                            <div class="agenda-date">
+                                <span class="day">15</span>
+                                <span class="month">Jan</span>
+                            </div>
+                            <div class="agenda-content">
+                                <h3>Pendaftaran PPDB Gelombang 1</h3>
+                                <p>Pendaftaran siswa baru tahun ajaran 2026/2027 untuk jalur prestasi dan afirmasi</p>
+                                <div class="agenda-meta">
+                                    <span><i class="fas fa-clock"></i> 08:00 - 15:00 WIB</span>
+                                    <span><i class="fas fa-map-marker-alt"></i> Aula Utama MANSARO</span>
+                                </div>
+                            </div>
+                            <div class="agenda-actions">
+                                <a href="#" class="agenda-btn">Detail</a>
+                                <a href="#" class="agenda-btn" style="background: var(--secondary-color);">Add to Calendar</a>
+                            </div>
+                        </div>
+                        
+                        <div class="agenda-item" data-aos="fade-right" data-aos-delay="100">
+                            <div class="agenda-date">
+                                <span class="day">20</span>
+                                <span class="month">Jan</span>
+                            </div>
+                            <div class="agenda-content">
+                                <h3>Ujian Semester Ganjil</h3>
+                                <p>Ujian akhir semester untuk kelas X, XI, dan XII mata pelajaran umum dan agama</p>
+                                <div class="agenda-meta">
+                                    <span><i class="fas fa-clock"></i> 07:00 - 14:00 WIB</span>
+                                    <span><i class="fas fa-map-marker-alt"></i> Ruang Kelas Masing-masing</span>
+                                </div>
+                            </div>
+                            <div class="agenda-actions">
+                                <a href="#" class="agenda-btn">Detail</a>
+                                <a href="#" class="agenda-btn" style="background: var(--secondary-color);">Add to Calendar</a>
+                            </div>
+                        </div>
+                        
+                        <div class="agenda-item" data-aos="fade-right" data-aos-delay="200">
+                            <div class="agenda-date">
+                                <span class="day">25</span>
+                                <span class="month">Jan</span>
+                            </div>
+                            <div class="agenda-content">
+                                <h3>Studi Banding ke MAN Insan Cendekia</h3>
+                                <p>Kunjungan studi tim pengembang kurikulum dan guru inti untuk pembelajaran best practice</p>
+                                <div class="agenda-meta">
+                                    <span><i class="fas fa-clock"></i> 06:00 - 18:00 WIB</span>
+                                    <span><i class="fas fa-map-marker-alt"></i> MAN IC Serpong, Tangerang</span>
+                                </div>
+                            </div>
+                            <div class="agenda-actions">
+                                <a href="#" class="agenda-btn">Detail</a>
+                                <a href="#" class="agenda-btn" style="background: var(--secondary-color);">Add to Calendar</a>
+                            </div>
+                        </div>
+                        
+                        <div class="agenda-item" data-aos="fade-right" data-aos-delay="300">
+                            <div class="agenda-date">
+                                <span class="day">30</span>
+                                <span class="month">Jan</span>
+                            </div>
+                            <div class="agenda-content">
+                                <h3>Pengumuman Kelulusan Semester Ganjil</h3>
+                                <p>Pengumuman hasil belajar dan kenaikan kelas untuk semester ganjil tahun 2025/2026</p>
+                                <div class="agenda-meta">
+                                    <span><i class="fas fa-clock"></i> 09:00 WIB</span>
+                                    <span><i class="fas fa-map-marker-alt"></i> Website MANSARO & Ruang Kelas</span>
+                                </div>
+                            </div>
+                            <div class="agenda-actions">
+                                <a href="#" class="agenda-btn">Detail</a>
+                                <a href="#" class="agenda-btn" style="background: var(--secondary-color);">Add to Calendar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kalender Tahunan -->
+                <div class="detail-card" data-aos="fade-up" data-aos-delay="150">
+                    <div class="detail-card-header">
+                        <div class="detail-card-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h2 class="detail-card-title">Kalender Tahunan 2025/2026</h2>
+                    </div>
+                    
+                    <div class="program-grid">
+                        <div class="program-card" data-aos="zoom-in">
+                            <div class="program-content">
+                                <h3>Semester Ganjil</h3>
+                                <p><strong>Juli 2025 - Desember 2025</strong></p>
+                                <ul class="program-features">
+                                    <li><i class="fas fa-calendar-check"></i> 15-19 Juli: Masa Pengenalan Lingkungan Sekolah</li>
+                                    <li><i class="fas fa-calendar-check"></i> 22 Juli: Hari Pertama Masuk Sekolah</li>
+                                    <li><i class="fas fa-calendar-check"></i> 17 Agustus: Upacara HUT RI</li>
+                                    <li><i class="fas fa-calendar-check"></i> 20-24 Jan: Ujian Semester Ganjil</li>
+                                    <li><i class="fas fa-calendar-check"></i> 30 Jan: Pengumuman Kelulusan</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="program-card" data-aos="zoom-in" data-aos-delay="100">
+                            <div class="program-content">
+                                <h3>Libur Semester</h3>
+                                <p><strong>31 Jan - 14 Juli 2026</strong></p>
+                                <ul class="program-features">
+                                    <li><i class="fas fa-calendar-check"></i> 31 Jan - 2 Feb: Libur Akhir Semester</li>
+                                    <li><i class="fas fa-calendar-check"></i> 8-14 Mar: Libur Mid Semester</li>
+                                    <li><i class="fas fa-calendar-check"></i> 1-7 Mei: Libur Idul Fitri</li>
+                                    <li><i class="fas fa-calendar-check"></i> 15-21 Jun: Libur Akhir Tahun</li>
+                                    <li><i class="fas fa-calendar-check"></i> 1-14 Jul: Libur Kenaikan Kelas</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="program-card" data-aos="zoom-in" data-aos-delay="200">
+                            <div class="program-content">
+                                <h3>Semester Genap</h3>
+                                <p><strong>Januari 2026 - Juni 2026</strong></p>
+                                <ul class="program-features">
+                                    <li><i class="fas fa-calendar-check"></i> 15 Jan: Hari Pertama Semester Genap</li>
+                                    <li><i class="fas fa-calendar-check"></i> 10-14 Mar: UTS Genap</li>
+                                    <li><i class="fas fa-calendar-check"></i> 1-30 Apr: Bulan Bahasa & Sastra</li>
+                                    <li><i class="fas fa-calendar-check"></i> 15-19 Jun: UAS Genap</li>
+                                    <li><i class="fas fa-calendar-check"></i> 24 Jun: Pembagian Rapor</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Download Section -->
+                <div class="detail-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="detail-card-header">
+                        <div class="detail-card-icon">
+                            <i class="fas fa-download"></i>
+                        </div>
+                        <h2 class="detail-card-title">Download Kalender</h2>
+                    </div>
+                    
+                    <div class="download-section">
+                        <div class="download-grid">
+                            <div class="download-card">
+                                <div class="download-icon">
+                                    <i class="fas fa-file-pdf"></i>
+                                </div>
+                                <h3>Kalender Akademik 2025/2026</h3>
+                                <p>File PDF lengkap dengan semua kegiatan selama tahun pelajaran</p>
+                                <a href="#" class="download-btn">
+                                    <i class="fas fa-download"></i> Download PDF
+                                </a>
+                            </div>
+                            <div class="download-card">
+                                <div class="download-icon">
+                                    <i class="fas fa-file-image"></i>
+                                </div>
+                                <h3>Kalender Dinding</h3>
+                                <p>Versi cetak untuk ditempel di dinding kelas atau ruangan</p>
+                                <a href="#" class="download-btn">
+                                    <i class="fas fa-download"></i> Download JPG
+                                </a>
+                            </div>
+                            <div class="download-card">
+                                <div class="download-icon">
+                                    <i class="fas fa-file-excel"></i>
+                                </div>
+                                <h3>Jadwal Excel</h3>
+                                <p>File Excel untuk dijadwal ulang sesuai kebutuhan kelas</p>
+                                <a href="#" class="download-btn">
+                                    <i class="fas fa-download"></i> Download Excel
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <div class="detail-navigation" data-aos="fade-up">
+                    <a href="fasilita.html" class="nav-button prev">
+                        <i class="fas fa-arrow-left"></i> fasilitas
+                    </a>
+                    <a href="../index.html" class="nav-button home">
+                        <i class="fas fa-home"></i> Beranda
+                    </a>
+                    <a href="../kesiswaan/organisasi.html" class="nav-button next">
+                        Organisasi <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="detail-footer">
+        <div class="container">
+            <p style="color: #f8f9fa;">&copy; 2026 MA Ma'arif Kalikuning Seluruh hak cipta dilindungi.</p>
+            <p  style="color: #f8f9fa;">Dsn. Krajan RT 01 RW 03 Ds. Kalikuning Kec. Tulakan Kab. Pacitan</p>
+        </div>
+    </footer>
+
+    <!-- ===== SCRIPTS ===== -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        // Calendar Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const calendarGrid = document.getElementById('calendar');
+            const currentMonthEl = document.getElementById('currentMonth');
+            const prevMonthBtn = document.getElementById('prevMonth');
+            const nextMonthBtn = document.getElementById('nextMonth');
+
+            let currentDate = new Date(2026, 0, 1); // Januari 2026
+
+            const monthNames = [
+                "Januari", "Februari", "Maret", "April", "Mei", "Juni",
+                "Juli", "Agustus", "September", "Oktober", "November", "Desember"
+            ];
+
+            const events = {
+                '2026-01-15': { title: 'PPDB Gelombang 1', type: 'important' },
+                '2026-01-20': { title: 'Ujian Semester', type: 'exam' },
+                '2026-01-25': { title: 'Studi Banding', type: 'event' },
+                '2026-01-30': { title: 'Pengumuman Kelulusan', type: 'important' },
+                '2026-02-10': { title: 'Rapat Guru', type: 'meeting' },
+                '2026-02-15': { title: 'Lomba 17-an', type: 'event' },
+                '2026-02-20': { title: 'UTS Genap', type: 'exam' },
+                '2026-03-08': { title: 'Libur Mid Semester', type: 'holiday' }
+            };
+
+            function renderCalendar(date) {
+                const year = date.getFullYear();
+                const month = date.getMonth();
+                
+                currentMonthEl.textContent = `${monthNames[month]} ${year}`;
+                
+                // Clear existing calendar
+                while (calendarGrid.children.length > 7) {
+                    calendarGrid.removeChild(calendarGrid.lastChild);
+                }
+
+                // Get first day of month
+                const firstDay = new Date(year, month, 1);
+                // Get last day of month
+                const lastDay = new Date(year, month + 1, 0);
+                // Get day of week for first day (0 = Sunday, 1 = Monday, etc.)
+                const firstDayOfWeek = firstDay.getDay();
+                // Get number of days in month
+                const daysInMonth = lastDay.getDate();
+
+                // Add empty cells for days before first day of month
+                for (let i = 0; i < firstDayOfWeek; i++) {
+                    const emptyDay = document.createElement('div');
+                    emptyDay.className = 'calendar-day empty';
+                    calendarGrid.appendChild(emptyDay);
+                }
+
+                // Add days of month
+                const today = new Date();
+                for (let day = 1; day <= daysInMonth; day++) {
+                    const dayElement = document.createElement('div');
+                    dayElement.className = 'calendar-day';
+                    
+                    const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+                    const event = events[dateStr];
+                    
+                    // Check if today
+                    if (year === today.getFullYear() && month === today.getMonth() && day === today.getDate()) {
+                        dayElement.classList.add('today');
+                    }
+                    
+                    // Check if has event
+                    if (event) {
+                        dayElement.classList.add('event');
+                        dayElement.innerHTML = `
+                            <div class="day-number">${day}</div>
+                            <div class="event-dot"></div>
+                            <div class="event-item" title="${event.title}">${event.title}</div>
+                        `;
+                    } else {
+                        dayElement.innerHTML = `<div class="day-number">${day}</div>`;
+                    }
+                    
+                    calendarGrid.appendChild(dayElement);
+                }
+            }
+
+            // Initial render
+            renderCalendar(currentDate);
+
+            // Event listeners for navigation
+            prevMonthBtn.addEventListener('click', function() {
+                currentDate.setMonth(currentDate.getMonth() - 1);
+                renderCalendar(currentDate);
+            });
+
+            nextMonthBtn.addEventListener('click', function() {
+                currentDate.setMonth(currentDate.getMonth() + 1);
+                renderCalendar(currentDate);
+            });
+
+            // Event item click handler
+            calendarGrid.addEventListener('click', function(e) {
+                if (e.target.classList.contains('event-item')) {
+                    const eventTitle = e.target.getAttribute('title');
+                    alert(`Event: ${eventTitle}\nKlik "Detail" di agenda untuk informasi lengkap.`);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

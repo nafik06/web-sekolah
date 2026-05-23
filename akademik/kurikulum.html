@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kurikulum - MA Ma'arif Kalikuning</title>
+    
+<!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../assets/css/detail-styles.css">
+    <link rel="stylesheet" href="../assets/css/layanan.css">
+    
+    <style>
+        /* Additional styles for administrasi */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+            margin-top: 40px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            padding: 35px 30px;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(52, 152, 219, 0.1);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(to right, #3498db, #f39c12);
+            transform: scaleX(0);
+            transition: transform 0.5s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            transition: all 0.4s ease;
+        }
+        
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(10deg);
+        }
+        
+        .service-icon i {
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .service-card h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .service-card p {
+            color: #6c757d;
+            margin-bottom: 25px;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .service-badge {
+            display: inline-block;
+            background: rgba(243, 156, 18, 0.1);
+            color: #f39c12;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .btn-service {
+            display: inline-block;
+            background: linear-gradient(to right, #3498db, #2980b9);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+        
+        .btn-service:hover {
+            background: linear-gradient(to right, #2980b9, #1a5276);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
+        }
+        
+        .forms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .form-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            border: 2px dashed #dee2e6;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .form-card:hover {
+            background: white;
+            border-color: #3498db;
+            transform: translateY(-5px);
+        }
+        
+        .form-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+        
+        .form-icon i {
+            font-size: 1.8rem;
+            color: white;
+        }
+        
+        .form-card h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .form-card p {
+            color: #6c757d;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .btn-form {
+            display: inline-block;
+            background: #f39c12;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+        }
+        
+        .btn-form:hover {
+            background: #e67e22;
+            transform: translateY(-3px);
+        }
+        
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .payment-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+        
+        .payment-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .payment-icon {
+            font-size: 2.5rem;
+            color: #27ae60;
+            margin-bottom: 15px;
+        }
+        
+        .payment-card h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .payment-card p {
+            color: #6c757d;
+            font-size: 0.9rem;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .contact-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .contact-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .contact-card h4 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .contact-details {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .contact-details li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .contact-details i {
+            color: #3498db;
+            width: 20px;
+        }
+        
+        .administration-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+            padding: 30px;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 15px;
+        }
+        
+        .admin-stat {
+            text-align: center;
+            padding: 25px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .admin-stat i {
+            font-size: 2.5rem;
+            color: #3498db;
+            margin-bottom: 15px;
+        }
+        
+        .admin-stat .number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #2c3e50;
+            font-family: 'Montserrat', sans-serif;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .admin-stat .label {
+            color: #6c757d;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        @media (max-width: 768px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .forms-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .payment-methods {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .administration-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+      .detail-page-title {
+    color: white;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+}
+
+.detail-page-subtitle {
+    color: white;
+    text-shadow: 1px 1px 6px rgba(0,0,0,0.5);
+}
+
+.detail-breadcrumb a,
+.detail-breadcrumb span,
+.detail-breadcrumb i {
+    color: white;
+}
+    </style>
+</head>
+<body class="detail-page">
+    <!-- ===== HEADER ===== -->
+    <header class="detail-header">
+        <div class="container">
+            <div class="detail-breadcrumb" data-aos="fade-right">
+                <a href="../index.html"><i class="fas fa-home"></i> Beranda</a> 
+                <i class="fas fa-chevron-right"></i>
+                <a href="#">Akademik</a> 
+                <i class="fas fa-chevron-right"></i>
+                <span>Kurikulum</span>
+            </div>
+            
+            <h1 class="detail-page-title" data-aos="fade-up">Kurikulum MA Ma'arif Kalikuning</h1>
+            <p class="detail-page-subtitle" data-aos="fade-up" data-aos-delay="100">
+                Mengintegrasikan kurikulum nasional dengan nilai-nilai keislaman dan pengembangan karakter
+            </p>
+        </div>
+    </header>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="detail-main">
+        <section class="detail-content">
+            <div class="container">
+                <!-- Program Unggulan -->
+                <div class="detail-card" data-aos="fade-up">
+                    <div class="detail-card-header">
+                        <div class="detail-card-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h2 class="detail-card-title">Program Unggulan</h2>
+                    </div>
+                    
+                    <div class="program-grid">
+                        <div class="program-card" data-aos="zoom-in">
+                            <div class="program-image">
+                                <img src="https://placehold.co/400x200/27ae60/ffffff?text=PROGRAM+RISET" alt="Program Riset">
+                            </div>
+                            <div class="program-content">
+                                <span class="program-badge">Wajib</span>
+                                <h3>Madrasah Riset</h3>
+                                <p>Program penelitian ilmiah sejak kelas X untuk mengembangkan budaya riset dan metode ilmiah.</p>
+                                <ul class="program-features">
+                                    <li><i class="fas fa-check"></i> Pembimbingan dosen perguruan tinggi</li>
+                                    <li><i class="fas fa-check"></i> Fasilitas laboratorium lengkap</li>
+                                    <li><i class="fas fa-check"></i> Kompetisi tingkat nasional</li>
+                                    <li><i class="fas fa-check"></i> Publikasi jurnal siswa</li>
+                                </ul>
+                                <a href="#" class="btn-link">Lihat Prestasi Riset <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        
+                        <div class="program-card" data-aos="zoom-in" data-aos-delay="100">
+                            <div class="program-image">
+                                <img src="https://placehold.co/400x200/2980b9/ffffff?text=PROGRAM+TAHFIDZ" alt="Program Tahfidz">
+                            </div>
+                            <div class="program-content">
+                                <span class="program-badge">Pilihan</span>
+                                <h3>Program Tahfidz</h3>
+                                <p>Menghafal Al-Qur'an minimal 3 juz dengan metode yang terstruktur dan pemantauan intensif.</p>
+                                <ul class="program-features">
+                                    <li><i class="fas fa-check"></i> Target 3-5 juz</li>
+                                    <li><i class="fas fa-check"></i> Sertifikat tahfidz resmi</li>
+                                    <li><i class="fas fa-check"></i> Ujian munaqasyah semesteran</li>
+                                    <li><i class="fas fa-check"></i> Pembinaan tilawah</li>
+                                </ul>
+                                <a href="#" class="btn-link">Info Pendaftaran <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        
+                        <div class="program-card" data-aos="zoom-in" data-aos-delay="200">
+                            <div class="program-image">
+                                <img src="https://placehold.co/400x200/e74c3c/ffffff?text=BAHASA+ASING" alt="Program Bahasa">
+                            </div>
+                            <div class="program-content">
+                                <span class="program-badge">Pilihan</span>
+                                <h3>Bahasa Asing Intensif</h3>
+                                <p>Penguasaan bahasa Arab dan Inggris untuk komunikasi akademik dan percakapan sehari-hari.</p>
+                                <ul class="program-features">
+                                    <li><i class="fas fa-check"></i> Bahasa Arab Fusha & Amiyah</li>
+                                    <li><i class="fas fa-check"></i> English for Academic Purpose</li>
+                                    <li><i class="fas fa-check"></i> TOEFL/TOAFL Preparation</li>
+                                    <li><i class="fas fa-check"></i> Native speaker workshop</li>
+                                </ul>
+                                <a href="#" class="btn-link">Jadwal Kelas <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kurikulum Jurusan -->
+                <div class="detail-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="detail-card-header">
+                        <div class="detail-card-icon">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <h2 class="detail-card-title">Kurikulum Berbasis Jurusan</h2>
+                    </div>
+                    
+                    <div class="curriculum-cards">
+                        <div class="curriculum-card ipa" data-aos="fade-right">
+                            <div class="curriculum-header">
+                                <div class="curriculum-icon">
+                                    <i class="fas fa-atom"></i>
+                                </div>
+                                <h3 class="curriculum-title">Ilmu Pengetahuan Alam (IPA)</h3>
+                            </div>
+                            <p>Fokus pada penguasaan sains dan teknologi untuk pendidikan tinggi di bidang kedokteran, teknik, farmasi, dan sains murni.</p>
+                            <ul class="curriculum-subject-list">
+                                <li><i class="fas fa-flask"></i> Fisika Terapan</li>
+                                <li><i class="fas fa-dna"></i> Biologi Molekuler</li>
+                                <li><i class="fas fa-vial"></i> Kimia Analisis</li>
+                                <li><i class="fas fa-calculator"></i> Matematika Peminatan</li>
+                                <li><i class="fas fa-laptop-code"></i> Komputasi Sains</li>
+                            </ul>
+                            <div class="curriculum-stats">
+                                <div class="stat-item">
+                                    <span class="stat-number">42</span>
+                                    <span class="stat-label">Jam/Minggu</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number">8</span>
+                                    <span class="stat-label">Mapel Utama</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number">3</span>
+                                    <span class="stat-label">Lab Pendukung</span>
+                                </div>
+                            </div>
+                            <a href="#" class="btn-link">Download Silabus IPA <i class="fas fa-download"></i></a>
+                        </div>
+                        
+                        <div class="curriculum-card ips" data-aos="fade-up">
+                            <div class="curriculum-header">
+                                <div class="curriculum-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <h3 class="curriculum-title">Ilmu Pengetahuan Sosial (IPS)</h3>
+                            </div>
+                            <p>Mengembangkan kemampuan analisis sosial, ekonomi, dan politik untuk studi di bidang humaniora, hukum, bisnis, dan sosial.</p>
+                            <ul class="curriculum-subject-list">
+                                <li><i class="fas fa-landmark"></i> Ekonomi Makro & Mikro</li>
+                                <li><i class="fas fa-globe-asia"></i> Geografi Regional</li>
+                                <li><i class="fas fa-scroll"></i> Sejarah Peradaban</li>
+                                <li><i class="fas fa-users"></i> Sosiologi Modern</li>
+                                <li><i class="fas fa-balance-scale"></i> Hukum dan Kewarganegaraan</li>
+                            </ul>
+                            <div class="curriculum-stats">
+                                <div class="stat-item">
+                                    <span class="stat-number">40</span>
+                                    <span class="stat-label">Jam/Minggu</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number">7</span>
+                                    <span class="stat-label">Mapel Utama</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number">2</span>
+                                    <span class="stat-label">Studio</span>
+                                </div>
+                            </div>
+                            <a href="#" class="btn-link">Download Silabus IPS <i class="fas fa-download"></i></a>
+                        </div>
+                        
+                        <div class="curriculum-card agama" data-aos="fade-left">
+                            <div class="curriculum-header">
+                                <div class="curriculum-icon">
+                                    <i class="fas fa-mosque"></i>
+                                </div>
+                                <h3 class="curriculum-title">Keagamaan</h3>
+                            </div>
+                            <p>Pendalaman ilmu-ilmu keislaman yang komprehensif untuk melanjutkan ke perguruan tinggi agama dan lembaga dakwah.</p>
+                            <ul class="curriculum-subject-list">
+                                <li><i class="fas fa-quran"></i> Ulumul Qur'an & Tafsir</li>
+                                <li><i class="fas fa-book"></i> Hadits & Musthalah</li>
+                                <li><i class="fas fa-balance-scale"></i> Fiqh & Ushul Fiqh</li>
+                                <li><i class="fas fa-brain"></i> Akidah & Akhlak</li>
+                                <li><i class="fas fa-history"></i> Sejarah & Kebudayaan Islam</li>
+                            </ul>
+                            <div class="curriculum-stats">
+                                <div class="stat-item">
+                                    <span class="stat-number">44</span>
+                                    <span class="stat-label">Jam/Minggu</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number">9</span>
+                                    <span class="stat-label">Mapel Utama</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number">4</span>
+                                    <span class="stat-label">Lab Bahasa</span>
+                                </div>
+                            </div>
+                            <a href="#" class="btn-link">Download Silabus Agama <i class="fas fa-download"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Jadwal Pelajaran -->
+                <div class="detail-card" data-aos="fade-up" data-aos-delay="150">
+                    <div class="detail-card-header">
+                        <div class="detail-card-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h2 class="detail-card-title">Jadwal Pelajaran Kelas X IPA</h2>
+                    </div>
+                    
+                    <div class="schedule-container">
+                        <table class="schedule-table">
+                            <thead>
+                                <tr>
+                                    <th>Waktu</th>
+                                    <th>Senin</th>
+                                    <th>Selasa</th>
+                                    <th>Rabu</th>
+                                    <th>Kamis</th>
+                                    <th>Jumat</th>
+                                    <th>Sabtu</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="time-slot">07:00 - 07:45</span></td>
+                                    <td>
+                                        <span class="subject-name">Matematika</span>
+                                        <span class="teacher-name">Budi Santoso, M.Pd</span>
+                                    </td>
+                                    <td>
+                                        <span class="subject-name">Fisika</span>
+                                        <span class="teacher-name">Sari Wulandari, M.Sc</span>
+                                    </td>
+                                    <td>
+                                        <span class="subject-name">Kimia</span>
+                                        <span class="teacher-name">Agus Riyanto, M.Si</span>
+                                    </td>
+                                    <td>
+                                        <span class="subject-name">Biologi</span>
+                                        <span class="teacher-name">Nurul Hikmah, M.Pd</span>
+                                    </td>
+                                    <td>
+                                        <span class="subject-name">Pend. Agama</span>
+                                        <span class="teacher-name">Ust. Arif, M.Pd.I</span>
+                                    </td>
+                                    <td>
+                                        <span class="subject-name">Bahasa Arab</span>
+                                        <span class="teacher-name">Ahmad Fauzi, M.Pd</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="time-slot">07:45 - 08:30</span></td>
+                                    <td>
+                                        <span class="subject-name">Matematika</span>
+                                        <span class="teacher-name">Budi Santoso, M.Pd</span>
+                                    </td>
+                                    <td>
+                                        <span class="subject-name">Fisika</span>
+                                        <span class="teacher-name">Sari Wulandari, M.Sc</span>
+                                    </td>
+                                    <td>
+                                        <span class="subject-name">Kimia</span>
+                                        <span class="teacher-name">Agus Riyanto, M.Si</span>
+                                    </td>
+                                    <td>
+                                        <span class="subject-name">Biologi</span>
+                                        <span class="teacher-name">Nurul Hikmah, M.Pd</span>
+                                    </td>
+                                    <td>
+                                        <span class="subject-name">Pend. Agama</span>
+                                        <span class="teacher-name">Ust. Arif, M.Pd.I</span>
+                                    </td>
+                                    <td>
+                                        <span class="subject-name">Bahasa Arab</span>
+                                        <span class="teacher-name">Ahmad Fauzi, M.Pd</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="time-slot">08:30 - 09:15</span></td>
+                                    <td>
+                                        <span class="subject-name">Bahasa Inggris</span>
+                                        <span class="teacher-name">Sri Wahyuni, S.Pd</span>
+                                    </td>
+                                    <td>
+                                        <span class="subject-name">Sejarah</span>
+                                        <span class="teacher-name">Drs. Bambang S.</span>
+                                    </td>
+                                    <td>
+                                        <span class="subject-name">PKn</span>
+                                        <span class="teacher-name">Dra. Siti Aminah</span>
+                                    </td>
+                                    <td>
+                                        <span class="subject-name">Seni Budaya</span>
+                                        <span class="teacher-name">Rina Setiawati, S.Sn</span>
+                                    </td>
+                                    <td>
+                                        <span class="subject-name">BK</span>
+                                        <span class="teacher-name">Fitriani, M.Pd</span>
+                                    </td>
+                                    <td>
+                                        <span class="subject-name">Tahfidz</span>
+                                        <span class="teacher-name">Ust. Muhammad</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="7" style="background: #f8f9fa; text-align: center; font-weight: 600; color: var(--primary-color);">
+                                        ISTIRAHAT
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="time-slot">09:45 - 10:30</span></td>
+                                    <td>
+                                        <span class="subject-name">PJOK</span>
+                                        <span class="teacher-name">Joko Susilo, S.Pd</span>
+                                    </td>
+                                    <td>
+                                        <span class="subject-name">TIK</span>
+                                        <span class="teacher-name">Rizki Ahmad, M.Kom</span>
+                                    </td>
+                                    <td>
+                                        <span class="subject-name">Praktikum</span>
+                                        <span class="teacher-name">Lab IPA</span>
+                                    </td>
+                                    <td>
+                                        <span class="subject-name">Bahasa Indonesia</span>
+                                        <span class="teacher-name">Dra. Ani Wijaya</span>
+                                    </td>
+                                    <td>
+                                        <span class="subject-name">Ekstrakurikuler</span>
+                                        <span class="teacher-name">Pembina</span>
+                                    </td>
+                                    <td>
+                                        <span class="subject-name">Pengembangan Diri</span>
+                                        <span class="teacher-name">Wali Kelas</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="download-section">
+                        <h3 style="color: var(--primary-color); margin-bottom: 20px;">Download Jadwal Lengkap</h3>
+                        <div class="download-grid">
+                            <div class="download-card">
+                                <div class="download-icon">
+                                    <i class="fas fa-file-pdf"></i>
+                                </div>
+                                <h3>Kelas X IPA</h3>
+                                <p>Jadwal pelajaran semester ganjil 2025/2026</p>
+                                <a href="#" class="download-btn">
+                                    <i class="fas fa-download"></i> Download PDF
+                                </a>
+                            </div>
+                            <div class="download-card">
+                                <div class="download-icon">
+                                    <i class="fas fa-file-excel"></i>
+                                </div>
+                                <h3>Kelas X IPS</h3>
+                                <p>Jadwal pelajaran semester ganjil 2025/2026</p>
+                                <a href="#" class="download-btn">
+                                    <i class="fas fa-download"></i> Download Excel
+                                </a>
+                            </div>
+                            <div class="download-card">
+                                <div class="download-icon">
+                                    <i class="fas fa-file-pdf"></i>
+                                </div>
+                                <h3>Kelas X Agama</h3>
+                                <p>Jadwal pelajaran semester ganjil 2025/2026</p>
+                                <a href="#" class="download-btn">
+                                    <i class="fas fa-download"></i> Download PDF
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <div class="detail-navigation" data-aos="fade-up">
+                    <a href="../profil/fasilitas.html" class="nav-button prev">
+                        <i class="fas fa-arrow-left"></i> Fasilitas
+                    </a>
+                    <a href="../index.html" class="nav-button home">
+                        <i class="fas fa-home"></i> Beranda
+                    </a>
+                    <a href="kalender.html" class="nav-button next">
+                        Kalender Akademik <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="detail-footer">
+        <div class="container">
+            <p>&copy; 2026 MAN 1 Bojonegoro. Seluruh hak cipta dilindungi.</p>
+            <p>Jl. Monginsidi No. 123, Bojonegoro, Jawa Timur | Email: info@mansaro.sch.id</p>
+        </div>
+    </footer>
+
+    <!-- ===== SCRIPTS ===== -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+    </script>
+</body>
+</html>
